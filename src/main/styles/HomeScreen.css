@@ -1,0 +1,9 @@
+.HomeScreen {
+  text-align: center;
+  background-color: #008080;
+  min-height: 100vh;
+}
+
+.AppBar>div {
+bottom: 0;
+}
