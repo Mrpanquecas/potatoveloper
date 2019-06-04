@@ -1,9 +1,16 @@
 import React from 'react'
-import { List, ListItem, Divider, Button, Toolbar } from "react95";
+import { List, ListItem, Divider, Button, Toolbar, Icon } from "react95";
 import AppBar from '../commonComponents/AppBar'
+import trashbin from '../utils/assets/trashbin.png'
+import help from '../utils/assets/help.png'
 
 
-
+const listItemStyle = {
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'flex-start'
+}
 
 function Menu() {
   
@@ -22,13 +29,15 @@ function Menu() {
     return (
         <AppBar fixed={false} className="AppBar">
         <Toolbar style={{ justifyContent: 'space-between' }}>
-        <Button onClick={toggleMenu} active={open}>Start</Button>
+        <Button onClick={toggleMenu} active={open}>
+          Start
+        </Button>
         {open && (
             <List horizontalAlign="left" verticalAlign="top">
-                <ListItem>👨‍💻 Sing</ListItem>
-                <ListItem>💃🏻 Danceeeeeeee</ListItem>
+                <ListItem style={listItemStyle} as="a" href="#slide1"><img style={{marginRight:8}} src={trashbin}/> About</ListItem>
+                <ListItem style={listItemStyle} as="a" href="#slide2"><img style={{marginRight:8}} src={help}/>Trash</ListItem>
                 <Divider />
-                <ListItem disabled>😴 Sleep</ListItem>
+                <ListItem style={listItemStyle} as="a" href="#slide3"><img style={{marginRight:8}} src={help}/>Projects</ListItem>
             </List>
         )}
         </Toolbar>

@@ -1,7 +1,10 @@
 .HomeScreen {
   text-align: center;
   background-color: #008080;
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .gridFlexCol {

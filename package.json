@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fullpage/react-fullpage": "^0.1.14",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-fullpage": "^0.1.19",
     "react-scripts": "3.0.1",
     "react95": "^2.0.0",
-    "styled-components": "^4.2.1",
-    "styled-grid-component": "^1.1.13"
+    "styled-components": "^4.2.1"
   },
   "scripts": {
     "start": "react-scripts start",

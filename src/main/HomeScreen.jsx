@@ -3,10 +3,9 @@ import './styles/HomeScreen.css'
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { reset, themes } from "react95";
 import Menu from '../commonComponents/Menu'
-import { Grid, GridItem } from 'styled-grid-component';
 import folder from '../utils/assets/folder.png'
 import Window from './window/CustomWindow'
-
+import ReactFullpage from '@fullpage/react-fullpage';
 const ResetStyles = createGlobalStyle`
   ${reset}
 `
@@ -19,38 +18,61 @@ const HomeScreen = () => {
     setOpen(!open);
   }
 
+  let options = {
+    activeClass:          'active', // the class that is appended to the sections links
+    anchors:              ['sectionOne', 'sectionTwo', 'sectionThree'],
+    arrowNavigation:      true, // use arrow keys
+    className:            'SectionContainer', // the class name for the section container
+    delay:                1000, // the scroll animation speed
+    navigation:           false, // use dots navigatio
+    scrollBar:            false, // use the browser default scrollbar
+    sectionClassName:     'Section', // the section class name
+    sectionPaddingTop:    '0', // the section top padding
+    sectionPaddingBottom: '0', // the section bottom padding
+    verticalAlign:        false // align the content of each section vertical
+  };
 
-
+const styles =  {
+  display:'flex',
+  flexDirection:'column',
+  alignItems:'center',
+}
   return (
-    <div className="HomeScreen">
-      <ResetStyles />
-      <ThemeProvider theme={themes.default}>
-        <>
-          <Grid
-            width="100%"
-            height="100vh"
-            templateColumns="repeat(3, 1fr)"
-            gap="10px"
-            autoRows="minmax(100px, auto)"
-          >
-            <GridItem column="1" row="3">
-              <div onClick={toggleFolder} className="gridFlexCol">
-                <img style={{width:'auto'}} src={folder}/>
-                <span>portfolio</span>
-              </div>
-            </GridItem>
-            <GridItem column="1 / 3" row="2">              
-              {open && (
-                <Window toggleFolder={toggleFolder}/>
-              )}
-              <Menu/>
-            </GridItem>
-
-          </Grid>
-        </>
-      </ThemeProvider>
-    </div>
-  )
+    <ReactFullpage
+      css3={true}
+      fixedElements={['.footer',]}
+      render={({}) => {
+        return(
+          <ReactFullpage.Wrapper>
+            <ResetStyles />
+            <ThemeProvider theme={themes.default}>
+              <>
+              
+                  <div className="section HomeScreen" data-anchor="slide1">
+                    <div className="HomeScreen">
+                      <div
+                        style={styles} 
+                        onClick={toggleFolder}
+                      >
+                        <img style={{width:'auto'}} src={folder}/>
+                        <span>portfolio</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="section HomeScreen" data-anchor="slide2">
+                    <Window title="developer.exe" toggleFolder={toggleFolder}/>
+                  </div>
+                  <div className="section HomeScreen" data-anchor="slide3">Page 3</div>
+                  <div className="footer">
+                    <Menu/>
+                  </div>
+              </>
+            </ThemeProvider>
+          </ReactFullpage.Wrapper>
+        )
+      }}
+    />
+    )
 }
 
 export default HomeScreen

@@ -1,23 +1,24 @@
 import React from 'react'
-import { Window,WindowContent,WindowHeader,Button,Toolbar  } from "react95";
+import { Window,WindowContent,WindowHeader,Button,Toolbar, Checkbox, Cutout, Fieldset  } from "react95";
 
 
-const CustomWindow = ({toggleFolder}) => {
+const CustomWindow = ({toggleFolder, title}) => {
 
   return (
     <Window style={{
-      position: 'absolute'
+      width: '80%',
+      maxWidth: 290
       }}
       shadow={false}
     >
       <WindowHeader
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-      }}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}
       >
-      <span>react95.exe</span>
+      <span>{title}</span>
       <Button onClick={toggleFolder} style={{ marginRight: '-6px', marginTop: '1px' }} size={'sm'} square>
         <span style={{ fontWeight: 'bold', transform: 'translateY(-1px)' }}>x</span>
       </Button>
@@ -33,13 +34,22 @@ const CustomWindow = ({toggleFolder}) => {
           Save
       </Button>
       </Toolbar>
-      <WindowContent>
-      <ul>
-        <li>Projecto 1</li>
-        <li>Projecto 2</li>
-        <li>Projecto 3</li>
-        <li>Projecto 4</li>
-      </ul>
+      <WindowContent         style={{
+          display: 'flex',
+          flexDirection: 'column',
+          textAlign: 'center',
+          justifyContent: 'center',
+        }}>
+      <div style={{ maxWidth: '250px' }}>
+        <Fieldset label="Choose developer type">
+          <Checkbox value="fast" label="Fast ⏱" name="fast" />
+          <br />
+          <Checkbox  value="good" label="Good 🌯" name="good" />
+          <br />
+          <Checkbox value="happy" label="Happy 🍕" name="happy" />
+        </Fieldset>
+      </div>
+
       </WindowContent>
     </Window>
   )
