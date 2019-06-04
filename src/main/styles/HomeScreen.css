@@ -4,6 +4,8 @@
   min-height: 100vh;
 }
 
-.AppBar>div {
-bottom: 0;
+.gridFlexCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

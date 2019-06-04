@@ -7,7 +7,8 @@
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
     "react95": "^2.0.0",
-    "styled-components": "^4.2.1"
+    "styled-components": "^4.2.1",
+    "styled-grid-component": "^1.1.13"
   },
   "scripts": {
     "start": "react-scripts start",

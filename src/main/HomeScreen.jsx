@@ -1,42 +1,53 @@
 import React from 'react'
 import './styles/HomeScreen.css'
 import { createGlobalStyle, ThemeProvider } from "styled-components";
-import { reset, themes, List, ListItem, Divider, Button, Toolbar } from "react95";
-import AppBar from './App'
+import { reset, themes } from "react95";
+import Menu from '../commonComponents/Menu'
+import { Grid, GridItem } from 'styled-grid-component';
+import folder from '../utils/assets/folder.png'
+import Window from './window/CustomWindow'
+
 const ResetStyles = createGlobalStyle`
   ${reset}
-`;
+`
 
-function HomeScreen() {
+const HomeScreen = () => {
   
   const [open, setOpen] = React.useState(false);
   
-  function toggleMenu() {
+ const toggleFolder = () => {
     setOpen(!open);
   }
 
-  function closeMenu() {
-    setOpen(false);
-  }
 
 
   return (
     <div className="HomeScreen">
       <ResetStyles />
       <ThemeProvider theme={themes.default}>
-      <AppBar fixed={false} className="AppBar">
-        <Toolbar style={{ justifyContent: 'space-between' }}>
-          <Button onClick={toggleMenu} active={open}>Start</Button>
-          {open && (
-            <List horizontalAlign="left" verticalAlign="top">
-                <ListItem>🎤 Sing</ListItem>
-                <ListItem>💃🏻 Dance</ListItem>
-                <Divider />
-                <ListItem disabled>😴 Sleep</ListItem>
-            </List>
-          )}
-        </Toolbar>
-        </AppBar>
+        <>
+          <Grid
+            width="100%"
+            height="100vh"
+            templateColumns="repeat(3, 1fr)"
+            gap="10px"
+            autoRows="minmax(100px, auto)"
+          >
+            <GridItem column="1" row="5">
+              <div onClick={toggleFolder} className="gridFlexCol">
+                <img style={{width:'auto'}} src={folder}/>
+                <span>portfolio</span>
+              </div>
+            </GridItem>
+            <GridItem column="1 / 5" row="3">              
+              {open && (
+                <Window toggleFolder={toggleFolder}/>
+              )}
+              <Menu/>
+            </GridItem>
+
+          </Grid>
+        </>
       </ThemeProvider>
     </div>
   )
