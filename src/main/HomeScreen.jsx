@@ -33,13 +33,13 @@ const HomeScreen = () => {
             gap="10px"
             autoRows="minmax(100px, auto)"
           >
-            <GridItem column="1" row="5">
+            <GridItem column="1" row="3">
               <div onClick={toggleFolder} className="gridFlexCol">
                 <img style={{width:'auto'}} src={folder}/>
                 <span>portfolio</span>
               </div>
             </GridItem>
-            <GridItem column="1 / 5" row="3">              
+            <GridItem column="1 / 3" row="2">              
               {open && (
                 <Window toggleFolder={toggleFolder}/>
               )}
