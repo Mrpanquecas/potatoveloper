@@ -27,7 +27,6 @@ const styles =  {
   return (
     <>
       <ReactFullpage
-        fixedElements={['.footer']}
         anchors={['slide1', 'slide2', 'slide3']}
         sectionsColor={['#008080', '#008080', '#008080']}
         // pluginWrapper={pluginWrapper}
@@ -55,7 +54,7 @@ const styles =  {
                   </div>
                 </div>
                 <div className="section" key="slide3">Page 3</div>
-                <div className="footer">
+                <div>
                   <Menu/>
                 </div>
             </ReactFullpage.Wrapper>

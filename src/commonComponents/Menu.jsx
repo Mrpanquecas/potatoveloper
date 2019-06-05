@@ -27,7 +27,7 @@ function Menu() {
       
   
     return (
-        <AppBar fixed={false} className="AppBar">
+        <AppBar fixed={true} className="AppBar">
         <Toolbar style={{ justifyContent: 'space-between' }}>
         <Button onClick={toggleMenu} active={open}>
           Start
