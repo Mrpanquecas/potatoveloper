@@ -8,13 +8,13 @@ import ReactFullpage from '@fullpage/react-fullpage';
 
 
 const pluginWrapper = () => {
-  require('fullpage.js/vendors/scrolloverflow');
+  // require('fullpage.js/vendors/scrolloverflow');
 }
 
 
 const HomeScreen = () => {
   
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
   
  const toggleFolder = () => {
     setOpen(!open);
@@ -62,7 +62,11 @@ const styles =  {
                   </div>
                 </div>
                 <div className="section HomeScreen" key="slide2">
-                  <Window title="developer.exe" toggleFolder={toggleFolder}/>
+                  <div>
+                    {open && (
+                      <Window title="developer.exe" toggleFolder={toggleFolder}/>
+                    )}
+                  </div>
                 </div>
                 <div className="section HomeScreen" key="slide3">Page 3</div>
                 <div className="footer">
