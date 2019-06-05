@@ -11,7 +11,7 @@ const ResetStyles = createGlobalStyle`
   ${reset}
 `
 //HACK TO WORK PROPERLY ON CHROME
-window.addEventListener( 'wheel', event => { event.preventDefault(); }, { passive: false } );
+// window.addEventListener( 'wheel', event => { event.preventDefault(); }, { passive: false } );
 
 ReactDOM.render(
   <>
