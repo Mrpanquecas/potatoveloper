@@ -1,14 +1,10 @@
 import React from 'react'
 import './styles/HomeScreen.css'
-import { createGlobalStyle, ThemeProvider } from "styled-components";
-import { reset, themes } from "react95";
 import Menu from '../commonComponents/Menu'
 import folder from '../utils/assets/folder.png'
 import Window from './window/CustomWindow'
 import ReactFullpage from '@fullpage/react-fullpage';
-const ResetStyles = createGlobalStyle`
-  ${reset}
-`
+
 
 const HomeScreen = () => {
   
@@ -39,8 +35,7 @@ const styles =  {
 }
   return (
     <>
-      <ResetStyles />
-      <ThemeProvider theme={themes.default}>
+
       <ReactFullpage
         css3={true}
         fixedElements={['.footer',]}
@@ -74,7 +69,6 @@ const styles =  {
           )
         }}
       />
-      </ThemeProvider>
     </>
     )
 }
