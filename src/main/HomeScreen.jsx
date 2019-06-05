@@ -6,6 +6,12 @@ import Window from './window/CustomWindow'
 import ReactFullpage from '@fullpage/react-fullpage';
 
 
+
+const pluginWrapper = () => {
+  require('fullpage.js/vendors/scrolloverflow');
+}
+
+
 const HomeScreen = () => {
   
   const [open, setOpen] = React.useState(false);
@@ -33,39 +39,36 @@ const styles =  {
   flexDirection:'column',
   alignItems:'center',
 }
+
   return (
     <>
-
       <ReactFullpage
-        css3={true}
         fixedElements={['.footer',]}
-        render={({}) => {
+        pluginWrapper={pluginWrapper}
+        render={({state, fullPageApi}) => {
           return(
             <ReactFullpage.Wrapper>
-
-                <>
-                
-                    <div className="section HomeScreen" data-anchor="slide1">
-                      <div className="HomeScreen">
-                        <div
-                          style={styles} 
-                          onClick={toggleFolder}
-                        >
-                          <img style={{width:'auto'}} src={folder}/>
-                          <span>portfolio</span>
-                        </div>
-                      </div>
+              <>
+                <div className="section HomeScreen" data-anchor="slide1">
+                  <div className="HomeScreen">
+                    <div
+                      style={styles} 
+                      onClick={toggleFolder}
+                    >
+                      <img style={{width:'auto'}} src={folder}/>
+                      <span>portfolio</span>
                     </div>
-                    <div className="section HomeScreen" data-anchor="slide2">
-                      <Window title="developer.exe" toggleFolder={toggleFolder}/>
-                    </div>
-                    <div className="section HomeScreen" data-anchor="slide3">Page 3</div>
-                    <div className="footer">
-                      <Menu/>
-                    </div>
-                </>
+                  </div>
+                </div>
+                <div className="section HomeScreen" data-anchor="slide2">
+                  <Window title="developer.exe" toggleFolder={toggleFolder}/>
+                </div>
+                <div className="section HomeScreen" data-anchor="slide3">Page 3</div>
+                <div className="footer">
+                  <Menu/>
+                </div>
+              </>
             </ReactFullpage.Wrapper>
-
           )
         }}
       />
