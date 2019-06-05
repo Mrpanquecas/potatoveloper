@@ -4,6 +4,9 @@ import './index.css';
 import HomeScreen from './main/HomeScreen';
 import * as serviceWorker from './serviceWorker';
 
+//HACK TO WORK PROPERLY ON CHROME
+window.addEventListener( 'wheel', event => { event.preventDefault(); }, { passive: false } );
+
 ReactDOM.render(<HomeScreen />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
