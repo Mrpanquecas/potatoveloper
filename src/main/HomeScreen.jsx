@@ -38,40 +38,44 @@ const styles =  {
   alignItems:'center',
 }
   return (
-    <ReactFullpage
-      css3={true}
-      fixedElements={['.footer',]}
-      render={({}) => {
-        return(
-          <ReactFullpage.Wrapper>
-            <ResetStyles />
-            <ThemeProvider theme={themes.default}>
-              <>
-              
-                  <div className="section HomeScreen" data-anchor="slide1">
-                    <div className="HomeScreen">
-                      <div
-                        style={styles} 
-                        onClick={toggleFolder}
-                      >
-                        <img style={{width:'auto'}} src={folder}/>
-                        <span>portfolio</span>
+    <>
+      <ResetStyles />
+      <ThemeProvider theme={themes.default}>
+      <ReactFullpage
+        css3={true}
+        fixedElements={['.footer',]}
+        render={({}) => {
+          return(
+            <ReactFullpage.Wrapper>
+
+                <>
+                
+                    <div className="section HomeScreen" data-anchor="slide1">
+                      <div className="HomeScreen">
+                        <div
+                          style={styles} 
+                          onClick={toggleFolder}
+                        >
+                          <img style={{width:'auto'}} src={folder}/>
+                          <span>portfolio</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="section HomeScreen" data-anchor="slide2">
-                    <Window title="developer.exe" toggleFolder={toggleFolder}/>
-                  </div>
-                  <div className="section HomeScreen" data-anchor="slide3">Page 3</div>
-                  <div className="footer">
-                    <Menu/>
-                  </div>
-              </>
-            </ThemeProvider>
-          </ReactFullpage.Wrapper>
-        )
-      }}
-    />
+                    <div className="section HomeScreen" data-anchor="slide2">
+                      <Window title="developer.exe" toggleFolder={toggleFolder}/>
+                    </div>
+                    <div className="section HomeScreen" data-anchor="slide3">Page 3</div>
+                    <div className="footer">
+                      <Menu/>
+                    </div>
+                </>
+            </ReactFullpage.Wrapper>
+
+          )
+        }}
+      />
+      </ThemeProvider>
+    </>
     )
 }
 
