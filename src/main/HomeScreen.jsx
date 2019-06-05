@@ -43,13 +43,14 @@ const styles =  {
   return (
     <>
       <ReactFullpage
-        fixedElements={['.footer',]}
+        fixedElements={['.footer']}
+        anchors={['slide1', 'slide2', 'slide3']}
         pluginWrapper={pluginWrapper}
         render={({state, fullPageApi}) => {
           return(
             <ReactFullpage.Wrapper>
               <>
-                <div className="section HomeScreen" data-anchor="slide1">
+                <div className="section HomeScreen" key="slide1">
                   <div className="HomeScreen">
                     <div
                       style={styles} 
@@ -60,10 +61,10 @@ const styles =  {
                     </div>
                   </div>
                 </div>
-                <div className="section HomeScreen" data-anchor="slide2">
+                <div className="section HomeScreen" key="slide2">
                   <Window title="developer.exe" toggleFolder={toggleFolder}/>
                 </div>
-                <div className="section HomeScreen" data-anchor="slide3">Page 3</div>
+                <div className="section HomeScreen" key="slide3">Page 3</div>
                 <div className="footer">
                   <Menu/>
                 </div>
