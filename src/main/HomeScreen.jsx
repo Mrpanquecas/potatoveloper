@@ -5,10 +5,12 @@ import folder from '../utils/assets/folder.png'
 import Window from './window/CustomWindow'
 import ReactFullpage from '@fullpage/react-fullpage';
 
+const SEL = 'custom-section';
+const SECTION_SEL = `.${SEL}`;
 
 
 const pluginWrapper = () => {
-  // require('fullpage.js/vendors/scrolloverflow');
+  require('fullpage.js/vendors/scrolloverflow');
 }
 
 
@@ -46,11 +48,12 @@ const styles =  {
         fixedElements={['.footer']}
         anchors={['slide1', 'slide2', 'slide3']}
         pluginWrapper={pluginWrapper}
-        render={({state, fullPageApi}) => {
+        sectionSelector={SECTION_SEL}
+        render={comp => {
           return(
             <ReactFullpage.Wrapper>
               <>
-                <div className="section HomeScreen" key="slide1">
+                <div className={SEL} key="slide1">
                   <div className="HomeScreen">
                     <div
                       style={styles} 
@@ -61,14 +64,14 @@ const styles =  {
                     </div>
                   </div>
                 </div>
-                <div className="section HomeScreen" key="slide2">
+                <div className={SEL} key="slide2">
                   <div>
                     {open && (
                       <Window title="developer.exe" toggleFolder={toggleFolder}/>
                     )}
                   </div>
                 </div>
-                <div className="section HomeScreen" key="slide3">Page 3</div>
+                <div className={SEL} key="slide3">Page 3</div>
                 <div className="footer">
                   <Menu/>
                 </div>
