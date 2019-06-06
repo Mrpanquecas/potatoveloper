@@ -2,7 +2,34 @@ import React from 'react'
 import { Window,WindowContent,WindowHeader,Button,Toolbar, Checkbox, Cutout, Fieldset  } from "react95";
 
 
+const fields = [
+  {
+    value: 'fast',
+    label: 'Fast ⏱',
+    name: 'fast'
+  },
+  {
+    value: 'good',
+    label: 'Good 🌯',
+    name: 'good'
+  },
+  {
+    value: 'happy',
+    label: 'Happy 🍕',
+    name: 'happy'
+  }
+]
+
 const CustomWindow = ({toggleFolder, title}) => {
+
+  const [{skill, lastSkill}, setDeveloperSkill] = React.useState({skill: undefined, lastSkill: undefined});
+  
+  const toggleDeveloperSkill = (newSkill, newLastSkill) => {
+    console.log(newSkill.target.value, newLastSkill)
+    const skillValue = newSkill.target.value
+    setDeveloperSkill({skill: skillValue, lastSkill: newLastSkill});
+  }
+
 
   return (
     <Window style={{
@@ -42,11 +69,12 @@ const CustomWindow = ({toggleFolder, title}) => {
         }}>
       <div style={{ maxWidth: '250px' }}>
         <Fieldset label="Choose developer type">
-          <Checkbox value="fast" label="Fast ⏱" name="fast" />
-          <br />
-          <Checkbox  value="good" label="Good 🌯" name="good" />
-          <br />
-          <Checkbox value="happy" label="Happy 🍕" name="happy" />
+          {fields.map(field => (
+            <>
+              <Checkbox onChange={e => toggleDeveloperSkill(e, skill)} checked={skill === field.name ? true : lastSkill === field.name ? true : false} style={{width:'50%'}} value={field.name} label={field.label} name={field.name} />
+              <br/>
+            </>
+          ))}
         </Fieldset>
       </div>
 
