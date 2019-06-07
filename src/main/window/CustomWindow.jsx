@@ -1,7 +1,6 @@
 import React from 'react'
 import { Window,WindowContent,WindowHeader,Button,Toolbar, Checkbox, Cutout, Fieldset  } from "react95";
 
-
 const fields = [
   {
     value: 'fast',
@@ -9,25 +8,35 @@ const fields = [
     name: 'fast'
   },
   {
-    value: 'good',
-    label: 'Good 🌯',
-    name: 'good'
-  },
-  {
     value: 'happy',
     label: 'Happy 🍕',
     name: 'happy'
+  },
+  {
+    value: 'good',
+    label: 'Good 🌯',
+    name: 'good'
   }
 ]
 
 const CustomWindow = ({toggleFolder, title}) => {
 
-  const [{skill, lastSkill}, setDeveloperSkill] = React.useState({skill: undefined, lastSkill: undefined});
+  const [checked, setDeveloperSkill] = React.useState([false, false, false]);
   
-  const toggleDeveloperSkill = (newSkill, newLastSkill) => {
-    console.log(newSkill.target.value, newLastSkill)
-    const skillValue = newSkill.target.value
-    setDeveloperSkill({skill: skillValue, lastSkill: newLastSkill});
+  const toggleDeveloperSkill = (skill, i) => {
+    console.log(checked)
+    let checkedList = checked
+    checkedList.splice(i, 1, !checked[i])
+    if(checkedList.filter(checked => checked === true).length === 3) {
+      checkedList.splice(checked[i-1], 1, true)
+      let rand = Math.floor(Math.random() * checkedList.length)
+      while(rand === i) {
+        rand = Math.floor(Math.random() * checkedList.length)
+      }
+      checkedList.splice(checked[rand-1], 1, false)
+      return setDeveloperSkill([...checkedList])
+    }
+    return setDeveloperSkill([...checkedList])
   }
 
 
@@ -69,9 +78,9 @@ const CustomWindow = ({toggleFolder, title}) => {
         }}>
       <div style={{ maxWidth: '250px' }}>
         <Fieldset label="Choose developer type">
-          {fields.map(field => (
+          {fields.map((field, i) => (
             <>
-              <Checkbox onChange={e => toggleDeveloperSkill(e, skill)} checked={skill === field.name ? true : lastSkill === field.name ? true : false} style={{width:'50%'}} value={field.name} label={field.label} name={field.name} />
+              <Checkbox onChange={e => toggleDeveloperSkill(e, i)} checked={checked[i] === true} style={{width:'50%'}} value={field.name} label={field.label} name={field.name} />
               <br/>
             </>
           ))}
