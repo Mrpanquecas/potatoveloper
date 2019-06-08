@@ -9,20 +9,21 @@ const fields = [
   },
   {
     value: 'good',
-    label: 'Good 🌯',
+    label: 'Good 🥇',
     name: 'good'
   },
   {
-    value: 'happy',
-    label: 'Happy 🍕',
-    name: 'happy'
+    value: 'cheap',
+    label: 'Cheap 💰',
+    name: 'cheap'
   }
 ]
 
 const CustomWindow = ({toggleFolder, title}) => {
 
   const [checked, setDeveloperSkill] = React.useState([false, false, false]);
-  
+  const [checked2, setDeveloperSkill2] = React.useState([]);
+
   const toggleDeveloperSkill = (skill, i) => {
     console.log(checked)
     let checkedList = checked
@@ -33,12 +34,52 @@ const CustomWindow = ({toggleFolder, title}) => {
       while(rand === i) {
         rand = Math.floor(Math.random() * checkedList.length)
       }
-      console.log(i,rand,checkedList)
-      checkedList.splice(checked[rand-1], 1, false)
-      console.log(i,rand,checkedList)
+      checkedList.splice(checked[rand], 1, false)
       return setDeveloperSkill([...checkedList])
     }
     return setDeveloperSkill([...checkedList])
+  }
+
+    
+  const toggleDeveloperSkill2 = (skill, i, name) => {
+    console.log(checked2, skill.target.checked, i, name)
+    let checkedList = checked2
+    if(skill.target.checked && checked2.length === 2) {
+      console.log('yada')
+      if(name === 'fast') {
+        console.log('yada')
+        return setDeveloperSkill2(['fast', 'good'])
+      }
+      if(name === 'good') {
+        console.log('yada')
+        return setDeveloperSkill2(['good', 'happy'])
+      }
+      if(name === 'happy') {
+        console.log('yada')
+        return setDeveloperSkill2(['happy', 'fast'])
+      }
+    }
+    if(skill.target.checked) {
+      console.log(checkedList)
+      return setDeveloperSkill2([...checkedList, name])
+    }else{
+      checkedList = checked2.filter(obj => obj !== name)
+      console.log(checkedList)
+      return setDeveloperSkill2([...checkedList])
+    }
+    
+    // checkedList.splice(i, 1)
+    // if(checkedList.filter(chckd => chckd === true).length === 3) {
+    //   checkedList.splice(checked2[i-1], 1, true)
+    //   let rand = Math.floor(Math.random() * checkedList.length)
+    //   while(rand === i) {
+    //     rand = Math.floor(Math.random() * checkedList.length)
+    //   }
+    //   checkedList.splice(checked2[rand], 1, false)
+    //   console.log(checkedList)
+    //   return setDeveloperSkill2([...checkedList, {name}])
+    // }
+    console.log(checkedList)
   }
 
 
@@ -79,10 +120,10 @@ const CustomWindow = ({toggleFolder, title}) => {
           justifyContent: 'center',
         }}>
       <div style={{ maxWidth: '250px' }}>
-        <Fieldset label="Choose developer type">
+        <Fieldset label="Choose developer traits">
           {fields.map((field, i) => (
             <>
-              <Checkbox onChange={e => toggleDeveloperSkill(e, i)} checked={checked[i] === true} style={{width:'50%'}} value={field.name} label={field.label} name={field.name} />
+              <Checkbox onChange={e => toggleDeveloperSkill2(e, i, field.name)} checked={checked2.find(el => el === field.name) ? true : false} style={{width:'50%'}} value={field.name} label={field.label} name={field.name} />
               <br/>
             </>
           ))}

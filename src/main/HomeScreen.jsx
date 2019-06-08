@@ -2,6 +2,7 @@ import React from 'react'
 import './styles/HomeScreen.css'
 import Menu from '../commonComponents/Menu'
 import folder from '../utils/assets/folder.png'
+import newceo from '../utils/assets/newCEO.jpg'
 import Window from './window/CustomWindow'
 import ReactFullpage from '@fullpage/react-fullpage';
 
@@ -37,13 +38,18 @@ const styles =  {
             <ReactFullpage.Wrapper>
                 <div className="section" key="slide1">
                   <div className="HomeScreen">
-                    <div
+{/*                     <div
                       style={styles} 
                       onClick={toggleFolder}
                     >
                       <img style={{width:'auto'}} src={folder}/>
                       <span>portfolio</span>
-                    </div>
+                    </div> */}
+                    <img style={{width:'auto'}} src={newceo}/>
+                    <span style={{fontSize: '6.75em', fontFamily:'VT323'}}>EXPERT IN</span>
+                    <span class="shakeText" style={{fontSize: '6.75em', fontFamily:'VT323'}}>CUTTING EDGE</span>
+                    <span style={{fontSize: '6.75em', fontFamily:'VT323'}}>TECHNOLOGIES</span>
+                    <span style={{fontSize: '6.75em', fontFamily:'VT323'}}>↓</span>
                   </div>
                 </div>
                 <div className="section" key="slide2">
