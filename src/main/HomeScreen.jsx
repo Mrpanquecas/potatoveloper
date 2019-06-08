@@ -59,8 +59,8 @@ const styles =  {
                     )}
                   </div>
                 </div>
-                <div className="section" key="slide3">Page 3</div>
-                <div>
+{/*                 <div className="section" key="slide3">Page 3</div>
+ */}                <div>
                   <Menu/>
                 </div>
             </ReactFullpage.Wrapper>
