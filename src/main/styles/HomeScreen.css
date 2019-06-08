@@ -22,21 +22,33 @@
 
 @keyframes shake {
   10%, 90% {
-    transform: translate3d(0, -4px, 0);
+    transform: translate3d(-4px, 0, 0);
   }
 
   20%, 80% {
-    transform: translate3d(0, 4px, 0);
+    transform: translate3d(4px, 0, 0);
   }
 
   30%, 50%, 70% {
-    transform: translate3d(0, -4px, 0);
+    transform: translate3d(-4px, 0, 0);
   }
 
   40%, 60% {
-    transform: translate3d(0, -4px, 0);
+    transform: translate3d(4px, 0, 0);
   }
 }
+
+.msFont {
+  font-family: 'VT323';
+  text-align: left;
+}
+
+
+.windowContent {
+  width: '100%';
+  max-width: 800;
+}
+
 .expertText {
   font-size: 4.75rem; 
   font-family: 'VT323'
@@ -52,6 +64,10 @@
   }
   .newCeo {
     width: 100%;
-    max-width: 200px;
+    max-width: 250px;
+  }
+  .windowContent {
+    width: '100%';
+    max-width: 250px;
   }
 }

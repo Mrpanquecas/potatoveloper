@@ -1,5 +1,5 @@
 import React from 'react'
-import { Window,WindowContent,WindowHeader,Button,Toolbar, Checkbox, Cutout, Fieldset  } from "react95";
+import { Window,WindowContent,WindowHeader,Button,Toolbar, Checkbox, Fieldset  } from "react95";
 
 const fields = [
   {
