@@ -8,14 +8,14 @@ const fields = [
     name: 'fast'
   },
   {
-    value: 'happy',
-    label: 'Happy 🍕',
-    name: 'happy'
-  },
-  {
     value: 'good',
     label: 'Good 🌯',
     name: 'good'
+  },
+  {
+    value: 'happy',
+    label: 'Happy 🍕',
+    name: 'happy'
   }
 ]
 
@@ -33,7 +33,9 @@ const CustomWindow = ({toggleFolder, title}) => {
       while(rand === i) {
         rand = Math.floor(Math.random() * checkedList.length)
       }
+      console.log(i,rand,checkedList)
       checkedList.splice(checked[rand-1], 1, false)
+      console.log(i,rand,checkedList)
       return setDeveloperSkill([...checkedList])
     }
     return setDeveloperSkill([...checkedList])
