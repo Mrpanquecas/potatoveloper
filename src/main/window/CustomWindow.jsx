@@ -52,11 +52,11 @@ const CustomWindow = ({toggleFolder, title}) => {
       }
       if(name === 'good') {
         console.log('yada')
-        return setDeveloperSkill2(['good', 'happy'])
+        return setDeveloperSkill2(['good', 'cheap'])
       }
-      if(name === 'happy') {
+      if(name === 'cheap') {
         console.log('yada')
-        return setDeveloperSkill2(['happy', 'fast'])
+        return setDeveloperSkill2(['cheap', 'fast'])
       }
     }
     if(skill.target.checked) {

@@ -37,3 +37,21 @@
     transform: translate3d(0, -4px, 0);
   }
 }
+.expertText {
+  font-size: 4.75rem; 
+  font-family: 'VT323'
+}
+.newCeo {
+  width: 100%;
+  max-width: 350px;
+}
+@media only screen and (max-width: 600px) {
+  .expertText {
+    font-size: 3.75rem; 
+    font-family: 'VT323'
+  }
+  .newCeo {
+    width: 100%;
+    max-width: 200px;
+  }
+}

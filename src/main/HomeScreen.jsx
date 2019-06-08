@@ -45,11 +45,11 @@ const styles =  {
                       <img style={{width:'auto'}} src={folder}/>
                       <span>portfolio</span>
                     </div> */}
-                    <img style={{width:'auto'}} src={newceo}/>
-                    <span style={{fontSize: '6.75em', fontFamily:'VT323'}}>EXPERT IN</span>
-                    <span class="shakeText" style={{fontSize: '6.75em', fontFamily:'VT323'}}>CUTTING EDGE</span>
-                    <span style={{fontSize: '6.75em', fontFamily:'VT323'}}>TECHNOLOGIES</span>
-                    <span style={{fontSize: '6.75em', fontFamily:'VT323'}}>↓</span>
+                    <img class="newCeo" src={newceo}/>
+                    <span class="expertText" >EXPERT IN</span>
+                    <span class="shakeText expertText" >CUTTING&nbsp;EDGE</span>
+                    <span class="expertText" >TECHNOLOGIES</span>
+                    <span class="expertText" >↓</span>
                   </div>
                 </div>
                 <div className="section" key="slide2">
