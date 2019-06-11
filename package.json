@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@fullpage/react-fullpage": "^0.1.14",
+    "create-react-class": "^15.6.3",
     "react": "^16.8.6",
     "react-awesome-styled-grid": "^2.2.6",
     "react-dom": "^16.8.6",

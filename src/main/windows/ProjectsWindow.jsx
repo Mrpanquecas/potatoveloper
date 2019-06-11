@@ -2,7 +2,7 @@ import React from 'react'
 import { Window,WindowContent,WindowHeader,Button,Toolbar, Progress, Cutout, Fieldset  } from "react95";
 import bribescore from '../../utils/assets/bribescore.png'
 import '../styles/HomeScreen.css'
-
+import ProgressBar from '../../commonComponents/ProgressBar';
 
 const projects = [
   {
@@ -64,7 +64,7 @@ const CustomWindow = ({toggleFolder, title}) => {
               <p class="msFont">title: Crypto currency game</p>
               <p class="msFont">description: React; Material UI</p>
             </Cutout>
-            <Progress  percent={50} />
+            <ProgressBar width="100" percent={50}/>
             <div
               style={{
                 display: 'flex',
