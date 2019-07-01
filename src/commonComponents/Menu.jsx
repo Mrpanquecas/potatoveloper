@@ -40,6 +40,7 @@ function Menu() {
                 <ListItem style={listItemStyle} as="a" href="#slide3"><img style={{marginRight:8}} src={help}/>Projects</ListItem>
             </List>
         )}
+       🚧 Project made to test React hooks API and react 95. under construction 🚧
         </Toolbar>
         </AppBar>
     )
