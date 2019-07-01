@@ -58,7 +58,7 @@ const CustomWindow = ({toggleFolder, title}) => {
           }}>
 
             <Cutout  style={{marginBottom: 8}}>
-            <img class="newCeo" src={bribescore}/>
+            <img class="project" src={bribescore}/>
             </Cutout>
             <Cutout  style={{marginBottom: 8, background: 'white', width: '100%'}}>
               <p class="msFont">title: Crypto currency game</p>

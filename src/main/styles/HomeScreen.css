@@ -70,3 +70,16 @@
     max-width: 250px;
   }
 }
+
+.project {
+  width: 100%;
+  max-width: 350px;
+}
+@media only screen and (max-width: 600px) {
+  .project {
+    width: 100%;
+    max-width: 250px;
+  }
+
+}
+
