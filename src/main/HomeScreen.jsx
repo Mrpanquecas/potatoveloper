@@ -17,12 +17,6 @@ const pluginWrapper = () => {
 
 const HomeScreen = () => {
   
-  const [open, setOpen] = React.useState(true);
-  
- const toggleFolder = () => {
-    setOpen(!open);
-  }
-
 const styles =  {
   display:'flex',
   flexDirection:'column',
@@ -50,18 +44,14 @@ const styles =  {
                 </div>
                 <div className="section" key="slide2">
                   <div className="HomeScreen">
-                    {open && (
-                      <TraitsWindow title="developer.exe" toggleFolder={toggleFolder}/>
-                    )}
+                    <TraitsWindow title="developer.exe"/>
                   </div>
                 </div>
                 <div className="section" key="slide3">
                   <div className="HomeScreen">
-                    {open && (
-                      <Suspense fallback={<Hourglass size={32}/>}>
-                        <ProjectsWindow title="projects.exe" />
-                      </Suspense>
-                    )}
+                    <Suspense fallback={<Hourglass size={32}/>}>
+                      <ProjectsWindow title="projects.exe" />
+                    </Suspense>
                   </div>
                 </div>
                <div>

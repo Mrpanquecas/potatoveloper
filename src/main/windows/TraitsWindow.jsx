@@ -1,5 +1,7 @@
 import React from 'react'
 import { Window,WindowContent,WindowHeader,Button,Toolbar, Checkbox, Fieldset  } from "react95";
+import Icon from '../../commonComponents/Icon'
+import folder from '../../utils/assets/folder.png'
 
 const fields = [
   {
@@ -19,7 +21,14 @@ const fields = [
   }
 ]
 
-const CustomWindow = ({toggleFolder, title}) => {
+const iconStyles =  {
+  display:'flex',
+  flexDirection:'column',
+  alignItems:'center',
+}
+
+
+const CustomWindow = ({title}) => {
 
   const [checked, setDeveloperSkill] = React.useState([false, false, false]);
   const [checked2, setDeveloperSkill2] = React.useState([]);
@@ -40,6 +49,8 @@ const CustomWindow = ({toggleFolder, title}) => {
     return setDeveloperSkill([...checkedList])
   }
 
+
+  //NEED TO GET UB3R RANDOMIZER SCRIPT INSTEAD OF THIS PREDICTABLE CRAP
     
   const toggleDeveloperSkill2 = (skill, i, name) => {
     console.log(checked2, skill.target.checked, i, name)
@@ -83,55 +94,71 @@ const CustomWindow = ({toggleFolder, title}) => {
   }
 
 
-  return (
-    <Window style={{
-      width: '80%',
-      maxWidth: 290
-      }}
-      shadow={false}
-    >
-      <WindowHeader
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        }}
-      >
-      <span>{title}</span>
-      <Button onClick={toggleFolder} style={{ marginRight: '-6px', marginTop: '1px' }} size={'sm'} square>
-        <span style={{ fontWeight: 'bold', transform: 'translateY(-1px)' }}>x</span>
-      </Button>
-      </WindowHeader>
-      <Toolbar>
-      <Button variant="menu" size="sm">
-          File
-      </Button>
-      <Button variant="menu" size="sm">
-          Edit
-      </Button>
-      <Button variant="menu" size="sm" disabled>
-          Save
-      </Button>
-      </Toolbar>
-      <WindowContent         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          textAlign: 'center',
-          justifyContent: 'center',
-        }}>
-      <div style={{ maxWidth: '250px' }}>
-        <Fieldset label="Choose developer traits">
-          {fields.map((field, i) => (
-            <>
-              <Checkbox onChange={e => toggleDeveloperSkill2(e, i, field.name)} checked={checked2.find(el => el === field.name) ? true : false} style={{width:'50%'}} value={field.name} label={field.label} name={field.name} />
-              <br/>
-            </>
-          ))}
-        </Fieldset>
-      </div>
 
-      </WindowContent>
-    </Window>
+  const [open, setOpen] = React.useState(true);
+    
+  const toggleFolder = () => {
+    setOpen(!open);
+  }
+
+
+  
+
+  return (
+    <>
+      {open ? (
+        <Window style={{
+          width: '80%',
+          maxWidth: 290
+          }}
+          shadow={false}
+        >
+          <WindowHeader
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}
+          >
+          <span>{title}</span>
+          <Button onClick={toggleFolder} style={{ marginRight: '-6px', marginTop: '1px' }} size={'sm'} square>
+            <span style={{ fontWeight: 'bold', transform: 'translateY(-1px)' }}>x</span>
+          </Button>
+          </WindowHeader>
+          <Toolbar>
+          <Button variant="menu" size="sm">
+              File
+          </Button>
+          <Button variant="menu" size="sm">
+              Edit
+          </Button>
+          <Button variant="menu" size="sm" disabled>
+              Save
+          </Button>
+          </Toolbar>
+          <WindowContent         style={{
+              display: 'flex',
+              flexDirection: 'column',
+              textAlign: 'center',
+              justifyContent: 'center',
+            }}>
+          <div style={{ maxWidth: '250px' }}>
+            <Fieldset label="Choose developer traits">
+              {fields.map((field, i) => (
+                <>
+                  <Checkbox onChange={e => toggleDeveloperSkill2(e, i, field.name)} checked={checked2.find(el => el === field.name) ? true : false} style={{width:'50%'}} value={field.name} label={field.label} name={field.name} />
+                  <br/>
+                </>
+              ))}
+            </Fieldset>
+          </div>
+
+          </WindowContent>
+        </Window>
+      ) : (
+        <Icon description="developer.exe" onClick={toggleFolder} icon={folder} styles={iconStyles}/>
+      )}
+    </>
   )
 }
 
