@@ -2,12 +2,12 @@ import React from "react";
 import propTypes from "prop-types";
 
 import styled from "styled-components";
-import { blockSizes } from "../utils/common/system";
+
 import Cutout from "../utils/Cutout/Cutout";
+import { blockSizes } from "../utils/common/system";
 
 const Wrapper = styled(Cutout)`
   display: inline-block;
-  width: ${props => props.width}%;
   height: ${blockSizes.md};
   position: relative;
   text-align: center;
@@ -25,43 +25,38 @@ const WhiteBar = styled.div`
   color: ${({ theme }) => theme.text};
 `;
 
-const BlueBarContainer = styled.div`
-  width: ${props => props.percent}%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin-left: 2px;
-  margin-top: -2px;
-  overflow: hidden;
-  background: ${({ theme }) => theme.progress};
-`;
-
 const BlueBar = styled.div`
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  top: -2px;
+  left: 2px;
+  width: calc(100% - 4px);
   line-height: ${blockSizes.md};
   color: ${({ theme }) => theme.textInvert};
-  position: relative;
-  left: 50%;
+  background: ${({ theme }) => theme.progress};
+  clip-path: polygon(
+    0 0,
+    ${({ percent }) => percent}% 0,
+    ${({ percent }) => percent}% 100%,
+    0 100%
+  );
 `;
 
-const ProgressBar = ({ width, percent, shadow }) => (
-  <Wrapper width={width} shadow={shadow}>
-    <WhiteBar width={width}>{percent}%</WhiteBar>
-    <BlueBarContainer percent={percent}>
-      <BlueBar width={width}>{percent}%</BlueBar>
-    </BlueBarContainer>
+const ProgressBar = ({ width, percent, shadow, style }) => (
+  <Wrapper style={{ ...style, width }} shadow={shadow}>
+    <WhiteBar>{percent}%</WhiteBar>
+    <BlueBar percent={percent}>{percent}%</BlueBar>
   </Wrapper>
 );
 
 ProgressBar.defaultProps = {
-  width: 250,
+  width: "100%",
   percent: 0,
   shadow: true
 };
 ProgressBar.propTypes = {
-  width: propTypes.number,
+  width: propTypes.oneOfType([propTypes.string, propTypes.number]),
   percent: propTypes.number,
+  style: propTypes.object,
   shadow: propTypes.bool
 };
 
