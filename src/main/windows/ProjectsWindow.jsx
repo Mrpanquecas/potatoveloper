@@ -22,8 +22,8 @@ const projects = [
     projectImg: bribescore
   },
   {
-    title: 'title: Crypto currency game',
-    description: 'description: React Material UI',
+    title: 'title: Retake simulator',
+    description: 'description: Antd, React',
     percent: 60,
     projectImg: altice
   }

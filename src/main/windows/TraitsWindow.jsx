@@ -53,29 +53,22 @@ const CustomWindow = ({title}) => {
   //NEED TO GET UB3R RANDOMIZER SCRIPT INSTEAD OF THIS PREDICTABLE CRAP
     
   const toggleDeveloperSkill2 = (skill, i, name) => {
-    console.log(checked2, skill.target.checked, i, name)
     let checkedList = checked2
     if(skill.target.checked && checked2.length === 2) {
-      console.log('yada')
       if(name === 'fast') {
-        console.log('yada')
         return setDeveloperSkill2(['fast', 'good'])
       }
       if(name === 'good') {
-        console.log('yada')
         return setDeveloperSkill2(['good', 'cheap'])
       }
       if(name === 'cheap') {
-        console.log('yada')
         return setDeveloperSkill2(['cheap', 'fast'])
       }
     }
     if(skill.target.checked) {
-      console.log(checkedList)
       return setDeveloperSkill2([...checkedList, name])
     }else{
       checkedList = checked2.filter(obj => obj !== name)
-      console.log(checkedList)
       return setDeveloperSkill2([...checkedList])
     }
     
@@ -90,7 +83,6 @@ const CustomWindow = ({title}) => {
     //   console.log(checkedList)
     //   return setDeveloperSkill2([...checkedList, {name}])
     // }
-    console.log(checkedList)
   }
 
 
