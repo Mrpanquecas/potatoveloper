@@ -74,6 +74,7 @@
 .project {
   width: 100%;
   max-width: 350px;
+  height: 15vh;
 }
 @media only screen and (max-width: 600px) {
   .project {

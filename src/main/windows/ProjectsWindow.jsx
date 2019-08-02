@@ -1,15 +1,31 @@
 import React from 'react'
-import { Window,WindowContent,WindowHeader,Button,Toolbar, Progress, Cutout, Fieldset  } from "react95";
+import { Window,WindowContent,WindowHeader,Button,Toolbar, Progress, Cutout, Fieldset  } from "react95"
 import Icon from '../../commonComponents/Icon'
 import bribescore from '../../utils/assets/bribescore.png'
+import logo_opsify from '../../utils/assets/logo_opsify.png'
+import altice from '../../utils/assets/altice.png'
 import '../styles/HomeScreen.css'
-import ProgressBar from '../../commonComponents/ProgressBar';
+import ProgressBar from '../../commonComponents/ProgressBar'
 import folder from '../../utils/assets/folder.png'
 
 const projects = [
   {
-    name: '',
-    description: ''
+    title: 'title: OPSIFY (managment software)',
+    description: 'description: Antd, React, PWA',
+    percent: 20,
+    projectImg: logo_opsify
+  },
+  {
+    title: 'title: Crypto currency game',
+    description: 'description: React Material UI',
+    percent: 40,
+    projectImg: bribescore
+  },
+  {
+    title: 'title: Crypto currency game',
+    description: 'description: React Material UI',
+    percent: 60,
+    projectImg: altice
   }
 ]
 
@@ -21,16 +37,23 @@ const iconStyles =  {
 
 const CustomWindow = ({title}) => {
     
-  const [open, setOpen] = React.useState(true);
-    
+  const [open, setOpen] = React.useState(true)
+  const [position, goNextOrPrev] = React.useState(0)
+
+  const changeProject = nextOrPrev => {
+    console.log(position, nextOrPrev)
+    goNextOrPrev(nextOrPrev)
+  }
+
   const toggleFolder = () => {
-    setOpen(!open);
+    setOpen(!open)
   }
 
   return (
     <>
       {open ? (
         <Window 
+          style={{width: '50vw'}}
           shadow={false}
         >
           <WindowHeader
@@ -61,22 +84,22 @@ const CustomWindow = ({title}) => {
               flexDirection: 'column',
               textAlign: 'center',
               justifyContent: 'center',
+              alignItems: 'center'
             }}>
-          <div style={{ maxWidth: '250px' }}>
+          <div style={{ maxWidth: '50vw' }}>
               <div style={{
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center'
               }}>
-
                 <Cutout  style={{marginBottom: 8}}>
-                <img class="project" src={bribescore}/>
+                <img class="project" src={projects[position].projectImg}/>
                 </Cutout>
                 <Cutout  style={{marginBottom: 8, background: 'white', width: '100%'}}>
-                  <p class="msFont">title: Crypto currency game</p>
-                  <p class="msFont">description: React; Material UI</p>
+                  <p class="msFont">{projects[position].title}</p>
+                  <p class="msFont">{projects[position].description}</p>
                 </Cutout>
-                <ProgressBar width="100" percent={50}/>
+                <ProgressBar percent={projects[position].percent}/>
                 <div
                   style={{
                     display: 'flex',
@@ -86,10 +109,10 @@ const CustomWindow = ({title}) => {
                     width: '100%'
                   }}
                 >
-                  <Button style={{marginTop:8, marginRight: 4}}>
+                  <Button disabled={position === 0} onClick={() => changeProject(position-1)} style={{marginTop:8, marginRight: 4}}>
                     Previous
                   </Button>
-                  <Button style={{marginTop:8, marginLeft: 4}}>
+                  <Button disabled={position === projects.length-1} onClick={() => changeProject(position+1)} style={{marginTop:8, marginLeft: 4}}>
                     Next
                   </Button>
                 </div>
