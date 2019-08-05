@@ -9,6 +9,7 @@ import { Hourglass } from 'react95';
 
 const StartupPage = React.lazy(() => import('./StartupPage/StartupPage'));
 const ProjectsWindow = React.lazy(() => import('./windows/ProjectsWindow'));
+const SocialMediaWindow = React.lazy(() => import('./windows/SocialMediaWindow'))
 
 const pluginWrapper = () => {
   require('fullpage.js/vendors/scrolloverflow');
@@ -26,8 +27,8 @@ const styles =  {
   return (
     <>
       <ReactFullpage
-        anchors={['slide1', 'slide2', 'slide3']}
-        sectionsColor={['#008080', '#008080', '#008080']}
+        anchors={['slide1', 'slide2', 'slide3', 'slide4']}
+        sectionsColor={['#008080', '#008080', '#008080', '#008080']}
         // pluginWrapper={pluginWrapper}
         // autoScrolling={false}
         scrollingSpeed={400}
@@ -51,6 +52,13 @@ const styles =  {
                   <div className="HomeScreen">
                     <Suspense fallback={<Hourglass size={32}/>}>
                       <ProjectsWindow title="projects.exe" />
+                    </Suspense>
+                  </div>
+                </div>
+                <div className="section" key="slide4">
+                  <div className="HomeScreen">
+                    <Suspense fallback={<Hourglass size={32}/>}>
+                      <SocialMediaWindow title="social_media.exe" />
                     </Suspense>
                   </div>
                 </div>
