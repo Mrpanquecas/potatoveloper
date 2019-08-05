@@ -60,6 +60,7 @@
 
 .projectswindow {
   width: 50vw;
+  z-index: 0;
 }
 
 @media only screen and (max-width: 600px) {
