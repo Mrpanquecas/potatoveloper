@@ -38,6 +38,7 @@ function Menu() {
                 <ListItem style={listItemStyle} as="a" href="#slide2"><img style={{marginRight:8}} src={help}/>Trash</ListItem>
                 <Divider />
                 <ListItem style={listItemStyle} as="a" href="#slide3"><img style={{marginRight:8}} src={help}/>Projects</ListItem>
+                <ListItem style={listItemStyle} as="a" href="#slide4"><img style={{marginRight:8}} src={help}/>Social Media</ListItem>
             </List>
         )}
        🚧 Project made to test React hooks API and react 95. under construction 🚧
