@@ -101,7 +101,8 @@ const CustomWindow = ({title}) => {
               Save
           </Button>
           </Toolbar>
-          <WindowContent         style={{
+          <WindowContent
+            style={{
               display: 'flex',
               flexDirection: 'column',
               textAlign: 'center',
@@ -115,7 +116,7 @@ const CustomWindow = ({title}) => {
                 alignItems: 'center'
               }}>
                 <Cutout  style={{marginBottom: 8}}>
-                <img class="project" src={projects[position].projectImg}/>
+                  <img class="project" src={projects[position].projectImg}/>
                 </Cutout>
                 <Cutout  style={{marginBottom: 8, background: 'white', width: '100%'}}>
                   <p class="msFont">{projects[position].title}</p>
