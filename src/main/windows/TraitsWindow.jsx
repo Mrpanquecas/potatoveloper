@@ -148,7 +148,7 @@ const CustomWindow = ({title}) => {
           </WindowContent>
         </Window>
       ) : (
-        <Icon description="developer.exe" onClick={toggleFolder} icon={folder} styles={iconStyles}/>
+        <Icon description={title} onClick={toggleFolder} icon={folder} styles={iconStyles}/>
       )}
     </>
   )

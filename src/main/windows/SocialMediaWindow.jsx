@@ -4,30 +4,32 @@ import Icon from '../../commonComponents/Icon'
 import bribescore from '../../utils/assets/bribescore.png'
 import logo_opsify from '../../utils/assets/logo_opsify.png'
 import altice from '../../utils/assets/altice.png'
+import git from '../../utils/assets/git.svg'
+import linkedin from '../../utils/assets/linkedin.svg'
+import stackoverflow from '../../utils/assets/stackoverflow.svg'
+
 import '../styles/HomeScreen.css'
 import ProgressBar from '../../commonComponents/ProgressBar'
 import folder from '../../utils/assets/folder.png'
+import SocialLink from '../../commonComponents/SocialLinks';
 
 const projects = [
   {
     title: 'title: OPSIFY (managment software)',
     description: 'description: Antd, React, PWA',
     percent: 20,
-    scope: 'custom tailored solution',
     projectImg: logo_opsify
   },
   {
     title: 'title: Crypto currency game',
     description: 'description: React Material UI',
     percent: 40,
-    scope: 'fun side project for crypto',
     projectImg: bribescore
   },
   {
     title: 'title: Retake simulator',
     description: 'description: Antd, React',
     percent: 60,
-    scope: 'custom tailored solution',
     projectImg: altice
   }
 ]
@@ -38,7 +40,7 @@ const iconStyles =  {
   alignItems:'center',
 }
 
-const CustomWindow = ({title}) => {
+const SocialMediaWindow = ({title}) => {
     
   const [open, setOpen] = React.useState(true)
   const [position, goNextOrPrev] = React.useState(0)
@@ -89,37 +91,18 @@ const CustomWindow = ({title}) => {
               justifyContent: 'center',
               alignItems: 'center'
             }}>
-          <div style={{ maxWidth: '90%' }}>
+          <div style={{ width: '90%' }}>
               <div style={{
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center'
               }}>
-                <Cutout  style={{marginBottom: 8}}>
-                <img class="project" src={projects[position].projectImg}/>
+                <Cutout  style={{padding: 8, background: 'white', width: '100%'}}>
+                  <p class="msFont">Find me in my social media:</p>
+                  <SocialLink src={git} name="Github" url="https://github.com/Mrpanquecas" />
+                  <SocialLink src={linkedin} name="Linkedin" url="https://www.linkedin.com/in/costar" />
+                  <SocialLink src={stackoverflow} name="Stack Overflow" url="https://stackoverflow.com/users/8233144/ricardo-costa" />
                 </Cutout>
-                <Cutout  style={{marginBottom: 8, background: 'white', width: '100%'}}>
-                  <p class="msFont">{projects[position].title}</p>
-                  <p class="msFont">{projects[position].description}</p>
-                  <p class="msFont">{projects[position].scope}</p>
-                </Cutout>
-                <ProgressBar percent={projects[position].percent}/>
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'flex-end',
-                    width: '100%'
-                  }}
-                >
-                  <Button disabled={position === 0} onClick={() => changeProject(position-1)} style={{marginTop:8, marginRight: 4}}>
-                    Previous
-                  </Button>
-                  <Button disabled={position === projects.length-1} onClick={() => changeProject(position+1)} style={{marginTop:8, marginLeft: 4}}>
-                    Next
-                  </Button>
-                </div>
               </div>
           </div>
 
@@ -132,4 +115,4 @@ const CustomWindow = ({title}) => {
   )
 }
 
-export default CustomWindow
+export default SocialMediaWindow
