@@ -34,6 +34,24 @@ const projects = [
   }
 ]
 
+const socialMedia = [
+  {
+    src: git,
+    name: 'Github',
+    url:"https://github.com/Mrpanquecas"
+  },
+  {
+    src: linkedin,
+    name: 'Linkedin',
+    url:"https://www.linkedin.com/in/costar"
+  },
+  {
+    src: stackoverflow,
+    name: 'Stack Overflow',
+    url:"https://stackoverflow.com/users/8233144/ricardo-costa"
+  }
+]
+
 const iconStyles =  {
   display:'flex',
   flexDirection:'column',
@@ -100,9 +118,9 @@ const SocialMediaWindow = ({title}) => {
                 <Cutout  style={{padding: 8, background: 'white', width: '100%'}}>
                   <p class="msFont"></p>
                   <Fieldset variant="flat" label="Find me in my social media:">
-                    <SocialLink src={git} name="Github" url="https://github.com/Mrpanquecas" />
-                    <SocialLink src={linkedin} name="Linkedin" url="https://www.linkedin.com/in/costar" />
-                    <SocialLink src={stackoverflow} name="Stack Overflow" url="https://stackoverflow.com/users/8233144/ricardo-costa" />
+                    {socialMedia.map(social => (
+                      <SocialLink src={social.src} name={social.name} url={social.url}/>
+                    ))}
                   </Fieldset>
                 </Cutout>
               </div>
