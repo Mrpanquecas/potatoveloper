@@ -98,10 +98,12 @@ const SocialMediaWindow = ({title}) => {
                 alignItems: 'center'
               }}>
                 <Cutout  style={{padding: 8, background: 'white', width: '100%'}}>
-                  <p class="msFont">Find me in my social media:</p>
-                  <SocialLink src={git} name="Github" url="https://github.com/Mrpanquecas" />
-                  <SocialLink src={linkedin} name="Linkedin" url="https://www.linkedin.com/in/costar" />
-                  <SocialLink src={stackoverflow} name="Stack Overflow" url="https://stackoverflow.com/users/8233144/ricardo-costa" />
+                  <p class="msFont"></p>
+                  <Fieldset variant="flat" label="Find me in my social media:">
+                    <SocialLink src={git} name="Github" url="https://github.com/Mrpanquecas" />
+                    <SocialLink src={linkedin} name="Linkedin" url="https://www.linkedin.com/in/costar" />
+                    <SocialLink src={stackoverflow} name="Stack Overflow" url="https://stackoverflow.com/users/8233144/ricardo-costa" />
+                  </Fieldset>
                 </Cutout>
               </div>
           </div>
