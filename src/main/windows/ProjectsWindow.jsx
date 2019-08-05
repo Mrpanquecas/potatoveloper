@@ -1,5 +1,5 @@
 import React from 'react'
-import { Window,WindowContent,WindowHeader,Button,Toolbar, Progress, Cutout, Fieldset  } from "react95"
+import { Window,WindowContent,WindowHeader,Button,Toolbar, List, ListItem, Cutout  } from "react95"
 import Icon from '../../commonComponents/Icon'
 import bribescore from '../../utils/assets/bribescore.png'
 import logo_opsify from '../../utils/assets/logo_opsify.png'
@@ -7,6 +7,7 @@ import altice from '../../utils/assets/altice.png'
 import '../styles/HomeScreen.css'
 import ProgressBar from '../../commonComponents/ProgressBar'
 import folder from '../../utils/assets/folder.png'
+import help from '../../utils/assets/help.png'
 
 const projects = [
   {
@@ -38,10 +39,18 @@ const iconStyles =  {
   alignItems:'center',
 }
 
+const listItemStyle = {
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'flex-start'
+}
+
 const CustomWindow = ({title}) => {
     
   const [open, setOpen] = React.useState(true)
   const [position, goNextOrPrev] = React.useState(0)
+  const [openMenu, setOpenMenu] = React.useState(false);
 
   const changeProject = nextOrPrev => {
     console.log(position, nextOrPrev)
@@ -50,6 +59,11 @@ const CustomWindow = ({title}) => {
 
   const toggleFolder = () => {
     setOpen(!open)
+  }
+
+    
+  const toggleMenu = () => {
+    setOpenMenu(!openMenu);
   }
 
   return (
@@ -72,9 +86,14 @@ const CustomWindow = ({title}) => {
           </Button>
           </WindowHeader>
           <Toolbar>
-          <Button variant="menu" size="sm">
+          <Button variant="menu" size="sm" onClick={toggleMenu}>
               File
           </Button>
+          {openMenu && (
+            <List style={{zIndex: 2}} horizontalAlign="left" verticalAlign="bottom">
+              <ListItem style={listItemStyle} as="a" target="_top" href="mailto:ricardo.simoescosta@hotmail.com"><img style={{marginRight:8}} src={help}/> Request More Info</ListItem>
+            </List>
+          )}
           <Button variant="menu" size="sm">
               Edit
           </Button>

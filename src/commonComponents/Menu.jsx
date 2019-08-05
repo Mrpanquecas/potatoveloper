@@ -17,12 +17,12 @@ function Menu() {
     const [open, setOpen] = React.useState(false);
     
     const toggleMenu = () => {
-        setOpen(!open);
-      }
+      setOpen(!open);
+    }
     
      const closeMenu = () => {
-        setOpen(false);
-      }
+      setOpen(false);
+    }
     
       
   
