@@ -57,6 +57,11 @@
 
   max-width: 350px;
 }
+
+.projectswindow {
+  width: 50vw;
+}
+
 @media only screen and (max-width: 600px) {
   .expertText {
     font-size: 3.75rem; 
@@ -69,6 +74,16 @@
     width: '100%';
     max-width: 250px;
   }
+
+  .projectswindow {
+    width: 80vw;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .projectswindow {
+    width: 90vw;
+  }
 }
 
 .project {
@@ -76,11 +91,17 @@
   max-width: 350px;
   height: 15vh;
 }
+
 @media only screen and (max-width: 600px) {
-  .project {
-    width: 100%;
-    max-width: 250px;
+  .projectswindow {
+    width: 90vw;
   }
 
 }
 
+@media only screen and (min-width: 1024px) {
+  .projectswindow {
+    width: 40vh;
+  }
+
+}

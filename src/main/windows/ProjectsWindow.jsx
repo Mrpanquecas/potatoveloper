@@ -53,7 +53,7 @@ const CustomWindow = ({title}) => {
     <>
       {open ? (
         <Window 
-          style={{width: '50vw'}}
+          className="projectswindow"
           shadow={false}
         >
           <WindowHeader
@@ -86,7 +86,7 @@ const CustomWindow = ({title}) => {
               justifyContent: 'center',
               alignItems: 'center'
             }}>
-          <div style={{ maxWidth: '50vw' }}>
+          <div style={{ maxWidth: '90%' }}>
               <div style={{
                 display: 'flex',
                 flexDirection: 'column',
