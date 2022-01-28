@@ -1,7 +1,7 @@
 import React from 'react'
 import { Window,WindowContent,WindowHeader,Button,Toolbar, Checkbox, Fieldset  } from "react95";
 import Icon from '../../commonComponents/Icon'
-import folder from '../../utils/assets/folder.png'
+//import folder from '/public/utils/assets/folder.png'
 
 const fields = [
   {
@@ -148,7 +148,7 @@ const CustomWindow = ({title}) => {
           </WindowContent>
         </Window>
       ) : (
-        <Icon description={title} onClick={toggleFolder} icon={folder} styles={iconStyles}/>
+        <Icon description={title} onClick={toggleFolder} icon={"/images/folder.png"} styles={iconStyles}/>
       )}
     </>
   )

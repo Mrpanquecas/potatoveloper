@@ -1,12 +1,14 @@
 import React from 'react'
-import '../styles/HomeScreen.css'
-import newceo from '../../utils/assets/newCEO.jpg'
+//import newceo from 'images/newCEO.jpg'
+import Image from 'next/image'
 
 const HomeScreen = () => {
 
   return (
     <>
-      <img class="newCeo" src={newceo}/>
+      <div className='newCEO'>
+        <Image layout="fill" src={"/images/newCEO.jpg"}/>
+      </div>
       <span class="expertText" >EXPERT IN</span>
       <span class="shakeText expertText" >CUTTING&nbsp;EDGE</span>
       <span class="expertText" >TECHNOLOGIES</span>

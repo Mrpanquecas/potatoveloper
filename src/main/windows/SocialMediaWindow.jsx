@@ -1,16 +1,14 @@
 import React from 'react'
 import { Window,WindowContent,WindowHeader,Button,Toolbar, Progress, Cutout, Fieldset  } from "react95"
 import Icon from '../../commonComponents/Icon'
-import bribescore from '../../utils/assets/bribescore.png'
-import logo_opsify from '../../utils/assets/logo_opsify.png'
-import altice from '../../utils/assets/altice.png'
-import git from '../../utils/assets/git.svg'
-import linkedin from '../../utils/assets/linkedin.svg'
-import stackoverflow from '../../utils/assets/stackoverflow.svg'
-
-import '../styles/HomeScreen.css'
-import ProgressBar from '../../commonComponents/ProgressBar'
-import folder from '../../utils/assets/folder.png'
+//import bribescore from 'images/bribescore.png'
+//import logo_opsify from 'images/logo_opsify.png'
+//import altice from 'images/altice.png'
+//import git from 'images/git.svg'
+//import linkedin from 'images/linkedin.svg'
+//import stackoverflow from 'images/stackoverflow.svg'
+//import ProgressBar from '../../commonComponents/ProgressBar'
+//import folder from 'images/folder.png'
 import SocialLink from '../../commonComponents/SocialLinks';
 
 const projects = [
@@ -18,35 +16,35 @@ const projects = [
     title: 'title: OPSIFY (managment software)',
     description: 'description: Antd, React, PWA',
     percent: 20,
-    projectImg: logo_opsify
+    projectImg: "/images/logo_optsify.png"
   },
   {
     title: 'title: Crypto currency game',
     description: 'description: React Material UI',
     percent: 40,
-    projectImg: bribescore
+    projectImg: "/images/bribescore.png"
   },
   {
     title: 'title: Retake simulator',
     description: 'description: Antd, React',
     percent: 60,
-    projectImg: altice
+    projectImg: "/images/altice.png"
   }
 ]
 
 const socialMedia = [
   {
-    src: git,
+    src: "/images/git.svg",
     name: 'Github',
     url:"https://github.com/Mrpanquecas"
   },
   {
-    src: linkedin,
+    src: "/images/linkedin.svg",
     name: 'Linkedin',
     url:"https://www.linkedin.com/in/costar"
   },
   {
-    src: stackoverflow,
+    src: "/images/stackoverflow.svg",
     name: 'Stack Overflow',
     url:"https://stackoverflow.com/users/8233144/ricardo-costa"
   }
@@ -129,7 +127,7 @@ const SocialMediaWindow = ({title}) => {
           </WindowContent>
         </Window>
       ) : (
-        <Icon description={title} onClick={toggleFolder} icon={folder} styles={iconStyles}/>
+        <Icon description={title} onClick={toggleFolder} icon={"/folder.png"} styles={iconStyles}/>
       )}
     </>
   )
