@@ -3,6 +3,20 @@
 @tailwind utilities;
 
 
+@font-face {
+  font-family: "VT323";
+  font-style: normal;
+  font-weight: 100 900;
+  src: url("/fonts/VT323.ttf");
+}
+
+
+.expertText {
+  font-size: 4.75rem;
+  font-family: "VT323";
+}
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",

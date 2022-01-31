@@ -6,6 +6,7 @@ import TraitsWindow from "./windows/TraitsWindow"
 import StartupPage from "./StartupPage/StartupPage"
 import ProjectsWindow from "./windows/ProjectsWindow"
 import SocialMediaWindow from "./windows/SocialMediaWindow"
+import ErrorWindow from "./windows/ErrorWindow.tsx"
 import Parallax from "../../components/Parallax"
 
 const HomeScreen = () => {
@@ -16,13 +17,13 @@ const HomeScreen = () => {
           <StartupPage />
         </div>
       </div>
-
       <div className="section h-screen" key="slide2">
-        <Parallax offset={50}>
+        <Parallax spring={{stiffness: 150, damping: 50}} offset={250}>
+          <ErrorWindow error="Perfect developer does not exist" />
+        </Parallax>
           <div className="HomeScreen">
             <TraitsWindow title="developer.exe" />
           </div>
-        </Parallax>
       </div>
       <div className="section h-screen" key="slide3">
         <Parallax offset={100}>
