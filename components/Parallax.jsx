@@ -1,7 +1,17 @@
-import { useState, useRef, useEffect } from 'react'
-import { motion, useViewportScroll, useTransform, useSpring } from 'framer-motion'
+import { useState, useRef, useEffect } from "react"
+import {
+  motion,
+  useViewportScroll,
+  useTransform,
+  useSpring
+} from "framer-motion"
 
-const Parallax = ({ children, offset = 50, spring = { stiffness: 400, damping: 90 }}) => {
+const Parallax = ({
+  children,
+  offset = 50,
+  className = "",
+  spring = { stiffness: 400, damping: 90 }
+}) => {
   const [elementTop, setElementTop] = useState(0)
   const [clientHeight, setClientHeight] = useState(0)
   const ref = useRef(null)
@@ -24,16 +34,19 @@ const Parallax = ({ children, offset = 50, spring = { stiffness: 400, damping: 9
     const onResize = () => {
       // use getBoundingClientRect instead of offsetTop in order to
       // get the offset relative to the viewport
-      setElementTop(element.getBoundingClientRect().top + window.scrollY || window.pageYOffset)
+      setElementTop(
+        element.getBoundingClientRect().top + window.scrollY ||
+          window.pageYOffset
+      )
       setClientHeight(window.innerHeight)
     }
     onResize()
-    window.addEventListener('resize', onResize)
-    return () => window.removeEventListener('resize', onResize)
+    window.addEventListener("resize", onResize)
+    return () => window.removeEventListener("resize", onResize)
   }, [ref])
 
   return (
-    <motion.div ref={ref} style={{ y }}>
+    <motion.div className={className} ref={ref} style={{ y }}>
       {children}
     </motion.div>
   )

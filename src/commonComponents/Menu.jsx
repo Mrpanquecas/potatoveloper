@@ -10,19 +10,15 @@ const Menu = () => {
   }
 
   return (
-    <AppBar fixed={true}>
-      <Toolbar style={{ justifyContent: "space-between" }}>
-        <div style={{ position: "relative", display: "inline-block" }}>
+    <AppBar className="z-10" fixed={true}>
+      <Toolbar className="justify-between">
+        <div className="relative inline-block">
           <Button onClick={toggleMenu} active={open}>
             Start
           </Button>
           {open && (
             <List
-              style={{
-                position: "absolute",
-                left: "0",
-                top: "100%"
-              }}
+              className="absolute left-0 top-full"
               horizontalAlign="left"
               verticalAlign="top"
             >

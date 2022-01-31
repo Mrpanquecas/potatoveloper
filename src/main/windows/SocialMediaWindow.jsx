@@ -61,7 +61,7 @@ const SocialMediaWindow = ({ title }) => {
   const [open, setOpen] = React.useState(true)
   const [position, goNextOrPrev] = React.useState(0)
 
-  const changeProject = nextOrPrev => {
+  const changeProject = (nextOrPrev) => {
     console.log(position, nextOrPrev)
     goNextOrPrev(nextOrPrev)
   }
@@ -81,19 +81,9 @@ const SocialMediaWindow = ({ title }) => {
     )
   return (
     <Window className="projectswindow" shadow={false}>
-      <WindowHeader
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between"
-        }}
-      >
+      <WindowHeader className="flex items-center justify-between">
         <span>{title}</span>
-        <Button
-          onClick={toggleFolder}
-          size={"sm"}
-          square
-        >
+        <Button onClick={toggleFolder} size={"sm"} square>
           <span style={{ fontWeight: "bold", transform: "translateY(-1px)" }}>
             x
           </span>
@@ -130,7 +120,7 @@ const SocialMediaWindow = ({ title }) => {
             <Cutout style={{ padding: 8, background: "white", width: "100%" }}>
               <p class="msFont"></p>
               <Fieldset variant="flat" label="Find me in my social media:">
-                {socialMedia.map(social => (
+                {socialMedia.map((social) => (
                   <div key={social.name}>
                     <SocialLink
                       src={social.src}

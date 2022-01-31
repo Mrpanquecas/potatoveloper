@@ -1,51 +1,21 @@
-import Image from "next/image";
-import React from "react";
-import {
-  Window,
-  WindowContent,
-  WindowHeader,
-  Button,
-  Toolbar,
-  Checkbox,
-  Fieldset,
-} from "react95";
-import Icon from "../../commonComponents/Icon";
-//import folder from '/public/utils/assets/folder.png'
-
-const iconStyles = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-};
+import Image from "next/image"
+import React from "react"
+import { Window, WindowContent, WindowHeader, Button, Toolbar } from "react95"
+import useFunnyCases from "../../hooks/useFunnyCases.tsx"
 
 const CustomWindow = ({ title, error }) => {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(true)
+  const { isImpossibleDeveloper } = useFunnyCases()
 
   const toggleFolder = () => {
-    setOpen(!open);
-  };
-
-  if (!open)
-    return (
-      <Icon
-        description={title}
-        onClick={toggleFolder}
-        icon={"/images/folder.png"}
-        styles={iconStyles}
-      />
-    );
+    setOpen(!open)
+  }
+console.log('yay', isImpossibleDeveloper)
+  if (!open) return null
 
   return (
-    <Window
-      style={{
-        width: "80%",
-        maxWidth: 290,
-      }}
-      shadow={false}
-    >
-      <WindowHeader
-        className="flex items-center space-between"
-      >
+    <Window className="w-80 absolute" shadow={false}>
+      <WindowHeader className="flex items-center justify-between">
         <span>{title}</span>
         <Button onClick={toggleFolder} size={"sm"} square>
           <span style={{ fontWeight: "bold", transform: "translateY(-1px)" }}>
@@ -64,11 +34,16 @@ const CustomWindow = ({ title, error }) => {
           Save
         </Button>
       </Toolbar>
-      <WindowContent className="flex flex-col text-center justify-center">
-        <div className="flex items-center"><Image src="/images/error.png" width={34} height={34}/><span className="ml-4">{error}</span></div>
+      <WindowContent className="flex flex-col text-center justify-between">
+        <div className="flex">
+          <div className="w-10 h-10 flex items-center">
+            <Image src="/images/error.png" width={32} height={32} />
+          </div>
+          <span className="pl-4 text-left">{error}</span>
+        </div>
       </WindowContent>
     </Window>
-  );
-};
+  )
+}
 
-export default CustomWindow;
+export default CustomWindow

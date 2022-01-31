@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @font-face {
   font-family: "VT323";
   font-style: normal;
@@ -10,12 +9,10 @@
   src: url("/fonts/VT323.ttf");
 }
 
-
 .expertText {
   font-size: 4.75rem;
   font-family: "VT323";
 }
-
 
 body {
   margin: 0;

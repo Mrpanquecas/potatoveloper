@@ -1,6 +1,4 @@
 import React from "react"
-import { motion, useTransform, Variants } from "framer-motion"
-
 import Menu from "../commonComponents/Menu"
 import TraitsWindow from "./windows/TraitsWindow"
 import StartupPage from "./StartupPage/StartupPage"
@@ -18,12 +16,16 @@ const HomeScreen = () => {
         </div>
       </div>
       <div className="section h-screen" key="slide2">
-        <Parallax spring={{stiffness: 150, damping: 50}} offset={250}>
-          <ErrorWindow error="Perfect developer does not exist" />
-        </Parallax>
-          <div className="HomeScreen">
-            <TraitsWindow title="developer.exe" />
-          </div>
+        <div className="HomeScreen">
+          <TraitsWindow title="developer.exe" />
+          <Parallax
+            className="flex justify-center z-0"
+            spring={{ stiffness: 350, damping: 50 }}
+            offset={-180}
+          >
+            <ErrorWindow error="Be careful, what you are looking for might not exist" />
+          </Parallax>
+        </div>
       </div>
       <div className="section h-screen" key="slide3">
         <Parallax offset={100}>
@@ -39,7 +41,6 @@ const HomeScreen = () => {
           </div>
         </Parallax>
       </div>
-
       <div>
         <Menu />
       </div>

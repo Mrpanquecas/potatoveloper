@@ -38,12 +38,6 @@ const projects = [
   }
 ]
 
-const iconStyles = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center"
-}
-
 const listItemStyle = {
   display: "flex",
   flexDirection: "row",
@@ -56,7 +50,7 @@ const CustomWindow = ({ title }) => {
   const [position, goNextOrPrev] = React.useState(0)
   const [openMenu, setOpenMenu] = React.useState(false)
 
-  const changeProject = nextOrPrev => {
+  const changeProject = (nextOrPrev) => {
     goNextOrPrev(nextOrPrev)
   }
 
@@ -74,18 +68,12 @@ const CustomWindow = ({ title }) => {
         description={title}
         onClick={toggleFolder}
         icon={"/images/folder.png"}
-        styles={iconStyles}
+        className="flex flex-col items-center"
       />
     )
   return (
     <Window className="projectswindow" shadow={false}>
-      <WindowHeader
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between"
-        }}
-      >
+      <WindowHeader className="flex items-center justify-between">
         <span>{title}</span>
         <Button onClick={toggleFolder} size={"sm"} square>
           <span style={{ fontWeight: "bold", transform: "translateY(-1px)" }}>
@@ -99,12 +87,7 @@ const CustomWindow = ({ title }) => {
         </Button>
         {openMenu && (
           <List
-            style={{
-              position: "absolute",
-              left: "0",
-              top: "100%",
-              zIndex: "50"
-            }}
+            className="absolute left-0 top-full z-50"
             horizontalAlign="left"
             verticalAlign="bottom"
           >
@@ -126,15 +109,7 @@ const CustomWindow = ({ title }) => {
           Save
         </Button>
       </Toolbar>
-      <WindowContent
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          textAlign: "center",
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-      >
+      <WindowContent className="flex flex-col text-center justify-center items-center">
         <div style={{ maxWidth: "90%" }}>
           <div
             style={{
