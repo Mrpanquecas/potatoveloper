@@ -7,7 +7,7 @@ const HomeScreen = () => {
   return (
     <>
       <div className='newCEO'>
-        <Image layout="fill" src={"/images/newCEO.jpg"}/>
+        <Image width={350} height={300} src={"/images/newCEO.jpg"}/>
       </div>
       <span class="expertText" >EXPERT IN</span>
       <span class="shakeText expertText" >CUTTING&nbsp;EDGE</span>

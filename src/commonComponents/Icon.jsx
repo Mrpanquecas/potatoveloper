@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React from 'react'
 
 
@@ -7,7 +8,7 @@ const Icon = ({styles, onClick, icon, description}) => {
       style={styles} 
       onClick={onClick}
     >
-        <img style={{width:'auto'}} src={icon}/>
+        <Image width={34} height={34} src={icon}/>
         <span>{description}</span>
     </div> 
   )

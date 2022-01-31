@@ -13,7 +13,7 @@
 }
 
 .shakeText {
-  animation: shake 0.2s cubic-bezier(.36,.07,.19,.97) both;
+  animation: shake 0.2s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
   transform: translate3d(0, 0, 0);
   animation-iteration-count: infinite;
   backface-visibility: hidden;
@@ -21,37 +21,41 @@
 }
 
 @keyframes shake {
-  10%, 90% {
+  10%,
+  90% {
     transform: translate3d(-4px, 0, 0);
   }
 
-  20%, 80% {
+  20%,
+  80% {
     transform: translate3d(4px, 0, 0);
   }
 
-  30%, 50%, 70% {
+  30%,
+  50%,
+  70% {
     transform: translate3d(-4px, 0, 0);
   }
 
-  40%, 60% {
+  40%,
+  60% {
     transform: translate3d(4px, 0, 0);
   }
 }
 
 .msFont {
-  font-family: 'VT323';
+  font-family: "VT323";
   text-align: left;
 }
 
-
 .windowContent {
-  width: '100%';
+  width: "100%";
   max-width: 800;
 }
 
 .expertText {
-  font-size: 4.75rem; 
-  font-family: 'VT323'
+  font-size: 4.75rem;
+  font-family: "VT323";
 }
 .newCEO {
   max-width: 350px;
@@ -64,14 +68,14 @@
 
 @media only screen and (max-width: 600px) {
   .expertText {
-    font-size: 3.75rem; 
-    font-family: 'VT323'
+    font-size: 3.75rem;
+    font-family: "VT323";
   }
   .newCeo {
     max-width: 250px;
   }
   .windowContent {
-    width: '100%';
+    width: "100%";
     max-width: 250px;
   }
 
@@ -96,12 +100,25 @@
   .projectswindow {
     width: 90vw;
   }
-
 }
 
 @media only screen and (min-width: 1024px) {
   .projectswindow {
     width: 40vh;
   }
+}
 
+.backgroundVintage {
+  background-image: radial-gradient(
+      at center center,
+      transparent 0px,
+      transparent 60%,
+      rgba(0, 0, 0, 0.15) 100%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 1px,
+      rgba(0, 0, 0, 0.35) 3px
+    );
 }

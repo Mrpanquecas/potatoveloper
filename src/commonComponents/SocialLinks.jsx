@@ -1,30 +1,12 @@
+import Image from 'next/image';
 import React from 'react'
-import styled from 'styled-components'
-
-const LinkWrapper = styled.div`
-display: flex;
-align-items: center;
-`;
-
-const Image = styled.img `
-width: 32px;
-margin: 8px;
-`
-
-const Link = styled.a `
-  color: #0000EE;
-  &:visited {
-    color: #551A8B;
-  }
-`
-
 
 const SocialLink = ({src, url, name}) => {
   return (
-    <LinkWrapper>
-      <Image src={src}/>
-      <Link target="_blank" rel="noopener noreferrer" href={url}>{name}</Link>
-    </LinkWrapper>
+    <div className='flex items-center'>
+      <Image width={34} height={34} src={src}/>
+      <a className='text-black' target="_blank" rel="noopener noreferrer" href={url}>{name}</a>
+    </div>
   )
 }
 
