@@ -1,7 +1,7 @@
-import { useState, useRef, useLayoutEffect, ReactNode } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion, useViewportScroll, useTransform, useSpring } from 'framer-motion'
 
-const Parallax = ({ children, offset = 50 }) => {
+const Parallax = ({ children, offset = 50, spring = { stiffness: 400, damping: 90 }}) => {
   const [elementTop, setElementTop] = useState(0)
   const [clientHeight, setClientHeight] = useState(0)
   const ref = useRef(null)
@@ -15,9 +15,9 @@ const Parallax = ({ children, offset = 50 }) => {
 
   const yRange = useTransform(scrollY, [initial, final], [offset, -offset])
   // apply a spring to ease the result
-  const y = useSpring(yRange, { stiffness: 400, damping: 90 })
+  const y = useSpring(yRange, spring)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const element = ref.current
     // save our layout measurements in a function in order to trigger
     // it both on mount and on resize

@@ -136,7 +136,7 @@ const CustomWindow = ({ title }) => {
         <div style={{ maxWidth: "250px" }}>
           <Fieldset label="Choose developer traits">
             {fields.map(field => (
-              <>
+              <div key={field.name}>
                 <Checkbox
                   onChange={e => toggleDeveloperSkill2(e)}
                   checked={!!checked2.find(el => el[field.name])}
@@ -146,7 +146,7 @@ const CustomWindow = ({ title }) => {
                   name={field.name}
                 />
                 <br />
-              </>
+              </div>
             ))}
           </Fieldset>
         </div>

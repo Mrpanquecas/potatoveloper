@@ -131,11 +131,13 @@ const SocialMediaWindow = ({ title }) => {
               <p class="msFont"></p>
               <Fieldset variant="flat" label="Find me in my social media:">
                 {socialMedia.map(social => (
-                  <SocialLink
-                    src={social.src}
-                    name={social.name}
-                    url={social.url}
-                  />
+                  <div key={social.name}>
+                    <SocialLink
+                      src={social.src}
+                      name={social.name}
+                      url={social.url}
+                    />
+                  </div>
                 ))}
               </Fieldset>
             </Cutout>
