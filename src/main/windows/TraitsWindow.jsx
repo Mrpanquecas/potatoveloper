@@ -94,7 +94,7 @@ const CustomWindow = ({ title }) => {
     )
 
   return (
-    <Window className="w-80 z-10 absolute" shadow={false}>
+    <Window className="w-80 z-10" shadow={false}>
       <WindowHeader className="flex items-center justify-between">
         <span>{title}</span>
         <Button onClick={toggleFolder} size={"sm"} square>

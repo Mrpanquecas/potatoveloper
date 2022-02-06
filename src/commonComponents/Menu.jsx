@@ -1,8 +1,8 @@
 import Image from "next/image"
 import React from "react"
-import { List, ListItem, Divider, Button, Toolbar, AppBar } from "react95"
+import { List, ListItem, Divider, Button, Toolbar, AppBar, Progress } from "react95"
 
-const Menu = () => {
+const Menu = ({pageProgress}) => {
   const [open, setOpen] = React.useState(false)
 
   const toggleMenu = () => {
@@ -16,7 +16,7 @@ const Menu = () => {
           <Button onClick={toggleMenu} active={open}>
             Start
           </Button>
-          {open && (
+          {open && ( 
             <List
               className="absolute left-0 top-full"
               horizontalAlign="left"
@@ -41,9 +41,9 @@ const Menu = () => {
               </ListItem>
             </List>
           )}
-          🚧 Project made to test React hooks API and react 95. under
-          construction 🚧
+          
         </div>
+        <Progress value={pageProgress} />
       </Toolbar>
     </AppBar>
   )

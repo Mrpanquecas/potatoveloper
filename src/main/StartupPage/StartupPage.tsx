@@ -1,5 +1,4 @@
 import React from "react"
-//import newceo from 'images/newCEO.jpg'
 import Image from "next/image"
 
 const HomeScreen = () => {
@@ -8,10 +7,10 @@ const HomeScreen = () => {
       <div className="newCEO">
         <Image width={350} height={300} src={"/images/newCEO.jpg"} />
       </div>
-      <span class="expertText">EXPERT IN</span>
-      <span class="shakeText expertText">CUTTING&nbsp;EDGE</span>
-      <span class="expertText">TECHNOLOGIES</span>
-      <span class="expertText">↓</span>
+      <span className="expertText">EXPERT IN</span>
+      <span className="shakeText expertText">CUTTING&nbsp;EDGE</span>
+      <span className="expertText">TECHNOLOGIES</span>
+      <span className="expertText">↓</span>
     </>
   )
 }

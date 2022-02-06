@@ -10,11 +10,10 @@ const CustomWindow = ({ title, error }) => {
   const toggleFolder = () => {
     setOpen(!open)
   }
-console.log('yay', isImpossibleDeveloper)
   if (!open) return null
 
   return (
-    <Window className="w-80 absolute" shadow={false}>
+    <Window className="w-80" shadow={false}>
       <WindowHeader className="flex items-center justify-between">
         <span>{title}</span>
         <Button onClick={toggleFolder} size={"sm"} square>

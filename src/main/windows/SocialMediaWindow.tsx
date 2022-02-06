@@ -62,7 +62,6 @@ const SocialMediaWindow = ({ title }) => {
   const [position, goNextOrPrev] = React.useState(0)
 
   const changeProject = (nextOrPrev) => {
-    console.log(position, nextOrPrev)
     goNextOrPrev(nextOrPrev)
   }
 
