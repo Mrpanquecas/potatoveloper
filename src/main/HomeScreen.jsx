@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react"
 import { useClippy } from "@react95/clippy"
-
+import Image from "next/image"
 import Menu from "../commonComponents/Menu"
 import TraitsWindow from "./windows/TraitsWindow"
 import StartupPage from "./StartupPage/StartupPage.tsx"
@@ -8,11 +8,22 @@ import ProjectsWindow from "./windows/ProjectsWindow.tsx"
 import SocialMediaWindow from "./windows/SocialMediaWindow.tsx"
 import ErrorWindow from "./windows/ErrorWindow.tsx"
 import Parallax from "../../components/Parallax"
-import { useTransform, useViewportScroll } from "framer-motion"
+import {
+  useSpring,
+  useTransform,
+  useViewportScroll,
+  motion
+} from "framer-motion"
 
 const HomeScreen = () => {
   const { clippy } = useClippy()
 
+  const [alreadyPresented, setAlreadyPresented] = useState({
+    traits: false,
+    projects: false,
+    social: false
+  })
+  const [randomParallaxes, setRandomParallaxes] = useState([])
   const [isComplete, setIsComplete] = useState(false)
   const [pageProgress, setPageProgress] = useState(0)
   const { scrollYProgress } = useViewportScroll()
@@ -28,21 +39,92 @@ const HomeScreen = () => {
   useEffect(() => {
     if (window && clippy) {
       clippy.play("Wave")
+      clippy.speak(
+        "Hello there, It's been a while since I've seen you! Let me walk you trough my website :)"
+      )
     }
   }, [clippy])
 
   useEffect(() => {
+    if (!clippy) return
+    if (pageProgress === 20 && !alreadyPresented.traits) {
+      setAlreadyPresented({ ...alreadyPresented, traits: true })
+      clippy.stop()
+      clippy.speak(
+        "Here you can specify the traits of the developer you are looking for!"
+      )
+    }
+    if (pageProgress === 58 && !alreadyPresented.projects) {
+      setAlreadyPresented({ ...alreadyPresented, projects: true })
+      clippy.stop()
+      clippy.speak(
+        "Here you can find some of the projects I was/am involved in :)"
+      )
+    }
+    if (pageProgress === 80 && !alreadyPresented.social) {
+      setAlreadyPresented({ ...alreadyPresented, social: true })
+      clippy.stop()
+      clippy.speak("Here you can find all my social media related links!")
+    }
+  }, [clippy, pageProgress])
+
+  useEffect(() => {
     window.CLIPPY_CDN = "//s3.amazonaws.com/clippy.js/Agents/"
+    setRandomParallaxes(generateRandomParallaxes())
   }, [])
+
+  const generateRandomParallaxes = () => {
+    let i = 0
+    let parallaxes = []
+    const parallaxIcons = [
+      "error",
+      "folderEmpty",
+      "exec",
+      "execGear",
+      "search",
+      "trashbin",
+      "docs"
+    ]
+    while (i < 20) {
+      i += 1
+      const randomOffset = Math.floor(Math.random() * (1500 - 500 + 1) + 500)
+      const randomStiffness = Math.floor(Math.random() * (400 - 50 + 1) + 50)
+      const randomLeftOffset = Math.floor(Math.random() * (80 - 10 + 1) + 10)
+      const randomParallaxIcon =
+        parallaxIcons[Math.floor(Math.random() * parallaxIcons.length)]
+      parallaxes.push({
+        offset: randomOffset,
+        stiffness: randomStiffness,
+        damping: 50,
+        icon: randomParallaxIcon,
+        top: randomOffset,
+        left: `${randomLeftOffset}%`
+      })
+    }
+    return parallaxes
+  }
 
   return (
     <div className="backgroundVintage relative bg-cyan-700">
+      {randomParallaxes.map((parallax, i) => (
+        <Parallax
+          key={i}
+          className="absolute"
+          style={{
+            left: parallax.left,
+            top: parallax.top
+          }}
+          spring={{ stiffness: parallax.stiffness, damping: parallax.damping }}
+          offset={parallax.offset}
+        >
+          <Image width="32" height="32" src={`/images/${parallax.icon}.png`} alt={parallax.icon} />
+        </Parallax>
+      ))}
       <div className="section h-screen pt-20 " key="slide1">
         <div className="HomeScreen">
           <StartupPage />
         </div>
       </div>
-      <button onClick={() => clippy.play("Wave")} />
       <div className="section h-screen " key="slide2">
         <div className="HomeScreen">
           <TraitsWindow title="developer.exe" />

@@ -10,6 +10,7 @@ const Parallax = ({
   children,
   offset = 50,
   className = "",
+  style= {},
   spring = { stiffness: 400, damping: 90 }
 }) => {
   const [elementTop, setElementTop] = useState(0)
@@ -46,7 +47,7 @@ const Parallax = ({
   }, [ref])
 
   return (
-    <motion.div className={className} ref={ref} style={{ y }}>
+    <motion.div className={className} ref={ref} style={{ ...style, y }}>
       {children}
     </motion.div>
   )
