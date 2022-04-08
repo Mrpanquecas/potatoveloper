@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "VT323";
+  font-style: normal;
+  font-weight: 100 900;
+  src: url("/fonts/VT323.ttf");
+}
+
+.expertText {
+  font-size: 4.75rem;
+  font-family: "VT323";
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.backgroundVintage::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.06),
+      rgba(0, 255, 0, 0.02),
+      rgba(0, 0, 255, 0.06)
+    );
+  z-index: 50;
+  background-size: 100% 2px, 3px 100%;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.HomeScreen {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.gridFlexCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.shakeText {
+  animation: shake 0.2s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+  animation-iteration-count: infinite;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(4px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+.msFont {
+  font-family: "VT323";
+  text-align: left;
+}
+
+.windowContent {
+  width: "100%";
+  max-width: 800;
+}
+
+.expertText {
+  font-size: 4.75rem;
+  font-family: "VT323";
+}
+.newCEO {
+  max-width: 350px;
+}
+
+.projectswindow {
+  width: 50vw;
+  z-index: 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .expertText {
+    font-size: 3.75rem;
+    font-family: "VT323";
+  }
+  .newCeo {
+    max-width: 250px;
+  }
+  .windowContent {
+    width: "100%";
+    max-width: 250px;
+  }
+
+  .projectswindow {
+    width: 80vw;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .projectswindow {
+    width: 90vw;
+  }
+}
+
+.project {
+  width: 100%;
+  max-width: 350px;
+  height: 15vh;
+}
+
+@media only screen and (max-width: 600px) {
+  .projectswindow {
+    width: 90vw;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .projectswindow {
+    width: 40vh;
+  }
+}

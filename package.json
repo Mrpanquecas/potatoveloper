@@ -3,24 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@fullpage/react-fullpage": "^0.1.14",
-    "create-react-class": "^15.6.3",
-    "react": "^16.8.6",
-    "react-awesome-styled-grid": "^2.2.6",
-    "react-dom": "^16.8.6",
-    "react-fullpage": "^0.1.19",
-    "react-scripts": "3.0.1",
-    "react95": "^2.0.0",
-    "styled-components": "^4.2.1"
+    "@react95/clippy": "^1.0.7",
+    "framer-motion": "^6.2.3",
+    "next": "12",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "5.0.0",
+    "react95": "^3.10.0",
+    "styled-components": "^5.3.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "browserslist": {
     "production": [
@@ -33,5 +29,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@next/eslint-plugin-next": "^12.1.0",
+    "@testing-library/jest-dom": "^5.16.3",
+    "@testing-library/react": "^12.1.4",
+    "@testing-library/react-hooks": "^7.0.2",
+    "@types/jest": "^27.4.1",
+    "autoprefixer": "^10.4.2",
+    "eslint-config-next": "12.1.0",
+    "jest": "^27.5.1",
+    "postcss": "^8.4.5",
+    "tailwindcss": "^3.0.18"
   }
 }

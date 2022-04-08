@@ -1,76 +1,163 @@
-import React, { Suspense } from 'react'
-import './styles/HomeScreen.css'
-import Menu from '../commonComponents/Menu'
-import TraitsWindow from './windows/TraitsWindow'
-
-import ReactFullpage from '@fullpage/react-fullpage';
-import { Hourglass } from 'react95';
-
-
-const StartupPage = React.lazy(() => import('./StartupPage/StartupPage'));
-const ProjectsWindow = React.lazy(() => import('./windows/ProjectsWindow'));
-const SocialMediaWindow = React.lazy(() => import('./windows/SocialMediaWindow'))
-
-const pluginWrapper = () => {
-  require('fullpage.js/vendors/scrolloverflow');
-}
-
+import React, { useEffect, useState, useRef } from "react"
+import { useClippy } from "@react95/clippy"
+import Image from "next/image"
+import Menu from "../commonComponents/Menu"
+import TraitsWindow from "./windows/TraitsWindow"
+import StartupPage from "./StartupPage/StartupPage.tsx"
+import ProjectsWindow from "./windows/ProjectsWindow.tsx"
+import SocialMediaWindow from "./windows/SocialMediaWindow.tsx"
+import ErrorWindow from "./windows/ErrorWindow.tsx"
+import Parallax from "../../components/Parallax"
+import {
+  useSpring,
+  useTransform,
+  useViewportScroll,
+  motion
+} from "framer-motion"
 
 const HomeScreen = () => {
-  
-const styles =  {
-  display:'flex',
-  flexDirection:'column',
-  alignItems:'center',
-}
+  const { clippy } = useClippy() || {}
+
+  const [alreadyPresented, setAlreadyPresented] = useState({
+    traits: false,
+    projects: false,
+    social: false
+  })
+  const [randomParallaxes, setRandomParallaxes] = useState([])
+  const [isComplete, setIsComplete] = useState(false)
+  const [pageProgress, setPageProgress] = useState(0)
+  const { scrollYProgress } = useViewportScroll()
+  const yRange = useTransform(scrollYProgress, [0, 1], [0, 100])
+
+  useEffect(() => {
+    yRange.onChange((v) => {
+      setIsComplete(v >= 100)
+      setPageProgress(Math.trunc(v))
+    })
+  }, [yRange])
+
+  useEffect(() => {
+    if (window && clippy) {
+      clippy.play("Wave")
+      clippy.speak(
+        "Hello there, It's been a while since I've seen you! Let me walk you trough my website :)"
+      )
+    }
+  }, [clippy])
+
+  useEffect(() => {
+    if (!clippy) return
+    if (pageProgress === 20 && !alreadyPresented.traits) {
+      setAlreadyPresented({ ...alreadyPresented, traits: true })
+      clippy.stop()
+      clippy.speak(
+        "Here you can specify the traits of the developer you are looking for!"
+      )
+    }
+    if (pageProgress === 58 && !alreadyPresented.projects) {
+      setAlreadyPresented({ ...alreadyPresented, projects: true })
+      clippy.stop()
+      clippy.speak(
+        "Here you can find some of the projects I was/am involved in :)"
+      )
+    }
+    if (pageProgress === 80 && !alreadyPresented.social) {
+      setAlreadyPresented({ ...alreadyPresented, social: true })
+      clippy.stop()
+      clippy.speak("Here you can find all my social media related links!")
+    }
+  }, [clippy, pageProgress])
+
+  useEffect(() => {
+    setRandomParallaxes(generateRandomParallaxes())
+  }, [])
+
+  const generateRandomParallaxes = () => {
+    let i = 0
+    let parallaxes = []
+    const parallaxIcons = [
+      "error",
+      "folderEmpty",
+      "exec",
+      "execGear",
+      "search",
+      "trashbin",
+      "docs"
+    ]
+    while (i < 10) {
+      i += 1
+      const randomOffset = Math.floor(Math.random() * (1500 - 500 + 1) + 500)
+      const randomStiffness = Math.floor(Math.random() * (400 - 50 + 1) + 50)
+      const randomLeftOffset = Math.floor(Math.random() * (80 - 10 + 1) + 10)
+      const randomParallaxIcon =
+        parallaxIcons[Math.floor(Math.random() * parallaxIcons.length)]
+      parallaxes.push({
+        offset: randomOffset,
+        stiffness: randomStiffness,
+        damping: 50,
+        icon: randomParallaxIcon,
+        top: randomOffset,
+        left: `${randomLeftOffset}%`
+      })
+    }
+    return parallaxes
+  }
 
   return (
-    <>
-      <ReactFullpage
-        anchors={['slide1', 'slide2', 'slide3', 'slide4']}
-        sectionsColor={['#008080', '#008080', '#008080', '#008080']}
-        // pluginWrapper={pluginWrapper}
-        // autoScrolling={false}
-        scrollingSpeed={400}
-        css3={false}
-        render={comp => {
-          return(
-            <ReactFullpage.Wrapper>
-                <div className="section" key="slide1">
-                  <div className="HomeScreen">
-                    <Suspense fallback={<Hourglass size={32}/>}>
-                      <StartupPage />
-                    </Suspense>
-                  </div>
-                </div>
-                <div className="section" key="slide2">
-                  <div className="HomeScreen">
-                    <TraitsWindow title="developer.exe"/>
-                  </div>
-                </div>
-                <div className="section" key="slide3">
-                  <div className="HomeScreen">
-                    <Suspense fallback={<Hourglass size={32}/>}>
-                      <ProjectsWindow title="projects.exe" />
-                    </Suspense>
-                  </div>
-                </div>
-                <div className="section" key="slide4">
-                  <div className="HomeScreen">
-                    <Suspense fallback={<Hourglass size={32}/>}>
-                      <SocialMediaWindow title="social_media.exe" />
-                    </Suspense>
-                  </div>
-                </div>
-               <div>
-                  <Menu/>
-                </div>
-            </ReactFullpage.Wrapper>
-          )
-        }}
-      />
-    </>
-    )
+    <div className="backgroundVintage relative bg-cyan-700">
+      {randomParallaxes.map((parallax, i) => (
+        <Parallax
+          key={i}
+          className="absolute"
+          style={{
+            left: parallax.left,
+            top: parallax.top
+          }}
+          spring={{ stiffness: parallax.stiffness, damping: parallax.damping }}
+          offset={parallax.offset}
+        >
+          <Image width="120" height="120" src={`/images/${parallax.icon}.png`} alt={parallax.icon} />
+        </Parallax>
+      ))}
+      <div className="section h-screen pt-20 " data-testid="slide1">
+        <div className="HomeScreen">
+          <StartupPage />
+        </div>
+      </div>
+      <div className="section h-screen " data-testid="slide2">
+        <div className="HomeScreen">
+          <TraitsWindow title="developer.exe" />
+          <Parallax
+            className="flex justify-center z-0"
+            spring={{ stiffness: 350, damping: 50 }}
+            offset={-100}
+          >
+            <ErrorWindow
+              title="error.exe"
+              error="Be careful, what you are looking for might not exist"
+            />
+          </Parallax>
+        </div>
+      </div>
+      <div className="section h-screen " data-testid="slide3">
+        <Parallax offset={100}>
+          <div className="HomeScreen">
+            <ProjectsWindow title="projects.exe" />
+          </div>
+        </Parallax>
+      </div>
+      <div className="section h-screen " data-testid="slide4">
+        <Parallax offset={100}>
+          <div className="HomeScreen">
+            <SocialMediaWindow title="social_media.exe" />
+          </div>
+        </Parallax>
+      </div>
+      <div>
+        <Menu pageProgress={pageProgress} />
+      </div>
+    </div>
+  )
 }
 
 export default HomeScreen

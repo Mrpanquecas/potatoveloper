@@ -1,15 +1,12 @@
-import React from 'react'
+import Image from "next/image"
+import React from "react"
 
-
-const Icon = ({styles, onClick, icon, description}) => {
+const Icon = ({ className, onClick, icon, description }) => {
   return (
-    <div
-      style={styles} 
-      onClick={onClick}
-    >
-        <img style={{width:'auto'}} src={icon}/>
-        <span>{description}</span>
-    </div> 
+    <div className={className} onClick={onClick}>
+      <Image width={34} height={34} src={icon} />
+      <span>{description}</span>
+    </div>
   )
 }
 
