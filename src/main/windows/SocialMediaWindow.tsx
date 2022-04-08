@@ -117,7 +117,7 @@ const SocialMediaWindow = ({ title }) => {
             }}
           >
             <Cutout style={{ padding: 8, background: "white", width: "100%" }}>
-              <p class="msFont"></p>
+              <p className="msFont"></p>
               <Fieldset variant="flat" label="Find me in my social media:">
                 {socialMedia.map((social) => (
                   <div key={social.name}>

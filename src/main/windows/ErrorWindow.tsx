@@ -1,7 +1,7 @@
 import Image from "next/image"
 import React from "react"
 import { Window, WindowContent, WindowHeader, Button, Toolbar } from "react95"
-import useFunnyCases from "../../hooks/useFunnyCases.tsx"
+import useFunnyCases from "../../hooks/useFunnyCases"
 
 const CustomWindow = ({ title, error }) => {
   const [open, setOpen] = React.useState(true)

@@ -20,21 +20,40 @@ const projects = [
     description: "description: Antd, React, PWA",
     percent: 20,
     scope: "custom tailored solution",
-    projectImg: "/images/logo_opsify.png"
+    projectImg: "/images/logo_opsify.png",
+    link: null
   },
   {
     title: "title: Crypto currency game",
     description: "description: React Material UI",
     percent: 40,
     scope: "fun side project for crypto",
-    projectImg: "/images/bribescore.png"
+    projectImg: "/images/bribescore.png",
+    link: null
   },
   {
     title: "title: Retake simulator",
     description: "description: Antd, React",
     percent: 60,
     scope: "custom tailored solution",
-    projectImg: "/images/altice.png"
+    projectImg: "/images/altice.png",
+    link: null
+  },
+  {
+    title: "title: subscription funnel",
+    description: "react, nextjs, tailwindcss",
+    percent: 80,
+    scope: "Financial services",
+    projectImg: "/images/scpi_funnel.png",
+    link: "https://epargne.corum.fr/scpi-particuliers/intro"
+  },
+  {
+    title: "title: life insurance funnel",
+    description: "react, nextjs, tailwindcss",
+    percent: 100,
+    scope: "Financial services",
+    projectImg: "/images/life_funnel.png",
+    link: "https://epargne.corum.fr/assurance-vie-partenaires/partenaire"
   }
 ]
 
@@ -118,19 +137,24 @@ const CustomWindow = ({ title }) => {
               alignItems: "center"
             }}
           >
-            <Cutout style={{ marginBottom: 8 }}>
+            <Cutout className="mb-2">
               <Image
                 width={350}
-                height={100}
+                height={200}
                 src={projects[position].projectImg}
               />
             </Cutout>
             <Cutout
-              style={{ marginBottom: 8, background: "white", width: "100%" }}
+              className="mb-2 bg-white w-full"
+
             >
-              <p class="msFont">{projects[position].title}</p>
-              <p class="msFont">{projects[position].description}</p>
-              <p class="msFont">{projects[position].scope}</p>
+              <p className="msFont my-0">{projects[position].title}</p>
+              <p className="msFont my-0">{projects[position].description}</p>
+              <p className="msFont my-0">{projects[position].scope}</p>
+              <p className="msFont my-0">
+                link:
+                {projects[position].link ? <a href={projects[position].link}>project link</a> : "N/A"}
+              </p>
             </Cutout>
             <Progress value={projects[position].percent} />
             <div

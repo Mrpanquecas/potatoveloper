@@ -16,7 +16,7 @@ import {
 } from "framer-motion"
 
 const HomeScreen = () => {
-  const { clippy } = useClippy()
+  const { clippy } = useClippy() || {}
 
   const [alreadyPresented, setAlreadyPresented] = useState({
     traits: false,
@@ -69,7 +69,6 @@ const HomeScreen = () => {
   }, [clippy, pageProgress])
 
   useEffect(() => {
-    window.CLIPPY_CDN = "//s3.amazonaws.com/clippy.js/Agents/"
     setRandomParallaxes(generateRandomParallaxes())
   }, [])
 
@@ -85,7 +84,7 @@ const HomeScreen = () => {
       "trashbin",
       "docs"
     ]
-    while (i < 20) {
+    while (i < 10) {
       i += 1
       const randomOffset = Math.floor(Math.random() * (1500 - 500 + 1) + 500)
       const randomStiffness = Math.floor(Math.random() * (400 - 50 + 1) + 50)
@@ -117,15 +116,15 @@ const HomeScreen = () => {
           spring={{ stiffness: parallax.stiffness, damping: parallax.damping }}
           offset={parallax.offset}
         >
-          <Image width="32" height="32" src={`/images/${parallax.icon}.png`} alt={parallax.icon} />
+          <Image width="120" height="120" src={`/images/${parallax.icon}.png`} alt={parallax.icon} />
         </Parallax>
       ))}
-      <div className="section h-screen pt-20 " key="slide1">
+      <div className="section h-screen pt-20 " data-testid="slide1">
         <div className="HomeScreen">
           <StartupPage />
         </div>
       </div>
-      <div className="section h-screen " key="slide2">
+      <div className="section h-screen " data-testid="slide2">
         <div className="HomeScreen">
           <TraitsWindow title="developer.exe" />
           <Parallax
@@ -140,14 +139,14 @@ const HomeScreen = () => {
           </Parallax>
         </div>
       </div>
-      <div className="section h-screen " key="slide3">
+      <div className="section h-screen " data-testid="slide3">
         <Parallax offset={100}>
           <div className="HomeScreen">
             <ProjectsWindow title="projects.exe" />
           </div>
         </Parallax>
       </div>
-      <div className="section h-screen " key="slide4">
+      <div className="section h-screen " data-testid="slide4">
         <Parallax offset={100}>
           <div className="HomeScreen">
             <SocialMediaWindow title="social_media.exe" />

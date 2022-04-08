@@ -9,7 +9,7 @@ import {
   Fieldset
 } from "react95"
 import Icon from "../../commonComponents/Icon"
-import useFunnyCases from '/src/hooks/useFunnyCases.tsx'
+import useFunnyCases from '../../hooks/useFunnyCases'
 
 const fields = [
   {

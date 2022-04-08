@@ -5,7 +5,7 @@ import { Desktop } from "react95"
 const HomeScreen = () => {
   return (
     <>
-      <div className="newCEO">
+      <div data-testid="ceo" className="newCEO">
         <Desktop backgroundStyles={{ background: "blue" }}>
           <Image width={155} height={115} src={"/images/newCEO.jpg"} />
         </Desktop>
