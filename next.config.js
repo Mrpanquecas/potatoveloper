@@ -6,6 +6,7 @@ module.exports = {
     webpack5: true
   },
   swcMinify: true,
+  basePath: "",
   async headers() {
     return [
       {
