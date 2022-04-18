@@ -20,7 +20,7 @@ const FileTransfer = ({ pageProgress }) => (
       animate={{
         top: `${calculateMargin(pageProgress)}%`
       }}
-      transition={{ type: "tween", duration: 0.3 }}
+      transition={{ type: "tween", duration: 0.5 }}
       initial={false}
     >
       <Image
