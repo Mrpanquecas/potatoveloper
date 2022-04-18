@@ -8,7 +8,7 @@ import {
   Checkbox,
   Fieldset
 } from "react95"
-import Icon from "../../commonComponents/Icon"
+import Icon from "../../../components/Icon"
 import useFunnyCases from '../../hooks/useFunnyCases'
 
 const fields = [

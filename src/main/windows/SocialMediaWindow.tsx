@@ -9,8 +9,8 @@ import {
   Cutout,
   Fieldset
 } from "react95"
-import Icon from "../../commonComponents/Icon"
-import SocialLink from "../../commonComponents/SocialLinks"
+import Icon from "../../../components/Icon"
+import SocialLink from "../../../components/SocialLinks"
 
 const projects = [
   {

@@ -11,7 +11,7 @@ import {
   Cutout,
   Progress
 } from "react95"
-import Icon from "../../commonComponents/Icon"
+import Icon from "../../../components//Icon"
 //import ProgressBar from "../../commonComponents/ProgressBar"
 
 const projects = [

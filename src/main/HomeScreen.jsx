@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react"
 import { useClippy } from "@react95/clippy"
 import Image from "next/image"
-import Menu from "../commonComponents/Menu"
+import Menu from "../../components/Menu"
 import TraitsWindow from "./windows/TraitsWindow"
 import StartupPage from "./StartupPage/StartupPage.tsx"
 import ProjectsWindow from "./windows/ProjectsWindow.tsx"
@@ -14,6 +14,7 @@ import {
   useViewportScroll,
   motion
 } from "framer-motion"
+import FileTransfer from "../../components/FileTransfer"
 
 const HomeScreen = () => {
   const { clippy } = useClippy() || {}
@@ -66,7 +67,7 @@ const HomeScreen = () => {
       clippy.stop()
       clippy.speak("Here you can find all my social media related links!")
     }
-  }, [clippy, pageProgress])
+  }, [clippy, pageProgress, alreadyPresented])
 
   useEffect(() => {
     setRandomParallaxes(generateRandomParallaxes())
@@ -84,7 +85,7 @@ const HomeScreen = () => {
       "trashbin",
       "docs"
     ]
-    while (i < 10) {
+    while (i < 5) {
       i += 1
       const randomOffset = Math.floor(Math.random() * (1500 - 500 + 1) + 500)
       const randomStiffness = Math.floor(Math.random() * (400 - 50 + 1) + 50)
@@ -116,15 +117,21 @@ const HomeScreen = () => {
           spring={{ stiffness: parallax.stiffness, damping: parallax.damping }}
           offset={parallax.offset}
         >
-          <Image width="120" height="120" src={`/images/${parallax.icon}.png`} alt={parallax.icon} />
+          <Image
+            width="100"
+            height="100"
+            src={`/images/${parallax.icon}.png`}
+            alt={parallax.icon}
+          />
         </Parallax>
       ))}
-      <div className="section h-screen pt-20 " data-testid="slide1">
+      <FileTransfer pageProgress={pageProgress} />
+      <div className="section h-screen pt-20" data-testid="slide1">
         <div className="HomeScreen">
           <StartupPage />
         </div>
       </div>
-      <div className="section h-screen " data-testid="slide2">
+      <div className="section h-screen" data-testid="slide2">
         <div className="HomeScreen">
           <TraitsWindow title="developer.exe" />
           <Parallax
@@ -139,14 +146,14 @@ const HomeScreen = () => {
           </Parallax>
         </div>
       </div>
-      <div className="section h-screen " data-testid="slide3">
+      <div className="section h-screen" data-testid="slide3">
         <Parallax offset={100}>
           <div className="HomeScreen">
             <ProjectsWindow title="projects.exe" />
           </div>
         </Parallax>
       </div>
-      <div className="section h-screen " data-testid="slide4">
+      <div className="section h-screen" data-testid="slide4">
         <Parallax offset={100}>
           <div className="HomeScreen">
             <SocialMediaWindow title="social_media.exe" />
