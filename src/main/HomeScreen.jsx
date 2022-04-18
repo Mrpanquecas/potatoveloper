@@ -125,11 +125,11 @@ const HomeScreen = () => {
           />
         </Parallax>
       ))}
-      <FileTransfer pageProgress={pageProgress} />
       <div className="section h-screen pt-20" data-testid="slide1">
         <div className="HomeScreen">
           <StartupPage />
         </div>
+        <FileTransfer pageProgress={pageProgress} />
       </div>
       <div className="section h-screen" data-testid="slide2">
         <div className="HomeScreen">

@@ -3,16 +3,16 @@ import { motion } from "framer-motion"
 
 const calculateMargin = (pageProgress) => {
   if (pageProgress < 15) {
-    return 16
+    return 0
   }
   if (pageProgress > 90) {
-    return pageProgress - 10
+    return (pageProgress - 10) * 3.4
   }
-  return pageProgress
+  return pageProgress * 3
 }
-const FileTransfer = ({pageProgress}) => (
-  <div>
-    <div className="absolute flex justify-center w-full top-[15%] z-10">
+const FileTransfer = ({ pageProgress }) => (
+  <div className="relative h-full w-full">
+    <div className="absolute flex justify-center w-full z-10">
       <Image width="180" height="180" src={`/images/folder.png`} alt="folder" />
     </div>
     <motion.div
@@ -20,7 +20,7 @@ const FileTransfer = ({pageProgress}) => (
       animate={{
         top: `${calculateMargin(pageProgress)}%`
       }}
-      transition={{ type: "tween", duration: 0.300 }}
+      transition={{ type: "tween", duration: 0.3 }}
       initial={false}
     >
       <Image
@@ -30,7 +30,7 @@ const FileTransfer = ({pageProgress}) => (
         alt="folderEmpty"
       />
     </motion.div>
-    <div className="absolute flex justify-center w-full top-[90%] z-10">
+    <div className="absolute flex justify-center w-full top-[300%] z-10">
       <Image width="180" height="180" src={`/images/folder.png`} alt="folder" />
     </div>
   </div>
