@@ -2,7 +2,6 @@
   "name": "potatoveloper",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
   "dependencies": {
     "@react95/clippy": "^1.0.7",
     "framer-motion": "^6.2.3",
