@@ -36,7 +36,7 @@ const HomeScreen = () => {
       setPageProgress(Math.trunc(v))
     })
   }, [yRange])
-
+/* 
   useEffect(() => {
     if (window && clippy) {
       clippy.play("Wave")
@@ -67,9 +67,9 @@ const HomeScreen = () => {
       clippy.stop()
       clippy.speak("Here you can find all my social media related links!")
     }
-  }, [clippy, pageProgress, alreadyPresented])
+  }, [clippy, pageProgress, alreadyPresented]) */
 
-  useEffect(() => {
+/*   useEffect(() => {
     setRandomParallaxes(generateRandomParallaxes())
   }, [])
 
@@ -102,11 +102,11 @@ const HomeScreen = () => {
       })
     }
     return parallaxes
-  }
+  } */
 
   return (
     <div className="backgroundVintage relative bg-cyan-700">
-      {randomParallaxes.map((parallax, i) => (
+{/*       {randomParallaxes.map((parallax, i) => (
         <Parallax
           key={i}
           className="absolute"
@@ -124,7 +124,7 @@ const HomeScreen = () => {
             alt={parallax.icon}
           />
         </Parallax>
-      ))}
+      ))} */}
       <div className="section h-screen pt-20" data-testid="slide1">
         <div className="HomeScreen">
           <StartupPage />
