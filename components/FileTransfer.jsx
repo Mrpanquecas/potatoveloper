@@ -15,23 +15,21 @@ const FileTransfer = ({ pageProgress }) => (
     <div className="absolute flex justify-center w-full z-10">
       <Image width="180" height="180" src={`/images/folder.png`} alt="folder" />
     </div>
-    {pageProgress > 0 && (
-      <motion.div
-        className="absolute flex justify-center w-full z-0 rotate-12"
-        animate={{
-          top: `${calculateMargin(pageProgress)}%`
-        }}
-        transition={{ type: "tween", duration: 0.5 }}
-        initial={false}
-      >
-        <Image
-          width="100"
-          height="100"
-          src={`/images/file.png`}
-          alt="folderEmpty"
-        />
-      </motion.div>
-    )}
+    <motion.div
+      className="absolute flex justify-center w-full z-0 rotate-12"
+      animate={{
+        top: `${calculateMargin(pageProgress)}%`
+      }}
+      transition={{ type: "tween", duration: 0.5 }}
+      initial={false}
+    >
+      <Image
+        width="100"
+        height="100"
+        src={`/images/file.png`}
+        alt="folderEmpty"
+      />
+    </motion.div>
     <div className="absolute flex justify-center w-full top-[300%] z-10">
       <Image width="180" height="180" src={`/images/folder.png`} alt="folder" />
     </div>
