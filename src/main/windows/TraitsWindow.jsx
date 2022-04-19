@@ -38,7 +38,7 @@ const getRandomSkill = (skills, name) => {
   }
 }
 
-const CustomWindow = ({ title }) => {
+const TraitsWindow = ({ title }) => {
   const [checked2, setDeveloperSkill2] = React.useState([
     { fast: false },
     { good: false },
@@ -145,4 +145,4 @@ const CustomWindow = ({ title }) => {
   )
 }
 
-export default CustomWindow
+export default TraitsWindow

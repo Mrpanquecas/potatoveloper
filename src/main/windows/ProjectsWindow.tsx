@@ -64,7 +64,7 @@ const listItemStyle = {
   justifyContent: "flex-start"
 }
 
-const CustomWindow = ({ title }) => {
+const ProjectsWindow = ({ title }) => {
   const [open, setOpen] = React.useState(true)
   const [position, goNextOrPrev] = React.useState(0)
   const [openMenu, setOpenMenu] = React.useState(false)
@@ -190,4 +190,4 @@ const CustomWindow = ({ title }) => {
   )
 }
 
-export default CustomWindow
+export default ProjectsWindow
