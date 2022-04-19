@@ -90,6 +90,7 @@ const CustomWindow = ({ title }) => {
         onClick={toggleFolder}
         icon={"/images/folder.png"}
         className="flex flex-col items-center"
+        alt="folder"
       />
     )
 

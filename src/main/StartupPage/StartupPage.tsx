@@ -7,7 +7,7 @@ const HomeScreen = () => {
     <>
       <div data-testid="ceo" className="newCEO">
         <Desktop backgroundStyles={{ background: "blue" }}>
-          <Image width={155} height={115} src={"/images/newCEO.jpg"} />
+          <Image width={155} height={115} src={"/images/newCEO.jpg"} alt="CEO" />
         </Desktop>
       </div>
       <span className="expertText">EXPERT IN</span>

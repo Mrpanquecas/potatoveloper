@@ -88,6 +88,7 @@ const CustomWindow = ({ title }) => {
         onClick={toggleFolder}
         icon={"/images/folder.png"}
         className="flex flex-col items-center"
+        alt="folder"
       />
     )
   return (
@@ -142,6 +143,7 @@ const CustomWindow = ({ title }) => {
                 width={350}
                 height={200}
                 src={projects[position].projectImg}
+                alt={projects[position].title}
               />
             </Cutout>
             <Cutout

@@ -36,7 +36,7 @@ const CustomWindow = ({ title, error }) => {
       <WindowContent className="flex flex-col text-center justify-between">
         <div className="flex">
           <div className="w-10 h-10 flex items-center">
-            <Image src="/images/error.png" width={32} height={32} />
+            <Image src="/images/error.png" width={32} height={32} alt="error" />
           </div>
           <span className="pl-4 text-left">{error}</span>
         </div>

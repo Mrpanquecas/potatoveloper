@@ -76,6 +76,7 @@ const SocialMediaWindow = ({ title }) => {
         onClick={toggleFolder}
         icon={"/folder.png"}
         styles={iconStyles}
+        alt="folder"
       />
     )
   return (
