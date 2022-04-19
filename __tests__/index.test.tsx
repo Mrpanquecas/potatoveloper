@@ -1,9 +1,9 @@
 import "@testing-library/jest-dom/extend-expect"
 import { render, screen } from "@testing-library/react"
-import Main from "../pages/_app"
+import HomeScreenPage from "../pages"
 
 describe("it renders the homescreen", () => {
-  render(<Main />)
+  render(<HomeScreenPage />)
   it("renders section 1", () => {
     expect(screen.getByTestId("slide1")).toBeInTheDocument()
     expect(screen.getByTestId("slide2")).toBeInTheDocument()
