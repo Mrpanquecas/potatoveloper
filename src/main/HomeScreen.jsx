@@ -17,7 +17,7 @@ import {
 import FileTransfer from "../../components/FileTransfer"
 
 const HomeScreen = () => {
-  const { clippy } = useClippy() || {}
+  //const { clippy } = useClippy() || {}
 
   const [alreadyPresented, setAlreadyPresented] = useState({
     traits: false,
