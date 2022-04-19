@@ -5,6 +5,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
           <link
             href="/fonts/VT323.ttf"
             rel="preload"
