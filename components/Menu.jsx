@@ -27,42 +27,27 @@ const Menu = ({ pageProgress }) => {
               horizontalAlign="left"
               verticalAlign="top"
             >
-              <ListItem href="#slide1">
-                <Image
-                  width={34}
-                  height={34}
-                  src={"/images/trashbin.png"}
-                  alt="about"
-                />{" "}
-                About
+              <ListItem>
+               <a className="flex justify-between items-center w-full text-black no-underline" href="#projects">
+                  <Image
+                    width={34}
+                    height={34}
+                    src={"/images/help.png"}
+                    alt="projects"
+                  />
+                  Projects
+                </a>
               </ListItem>
-              <ListItem href="#slide2">
-                <Image
-                  width={34}
-                  height={34}
-                  src={"/images/help.png"}
-                  alt="trash"
-                />
-                Trash
-              </ListItem>
-              <Divider />
-              <ListItem href="#slide3">
-                <Image
-                  width={34}
-                  height={34}
-                  src={"/images/help.png"}
-                  alt="projects"
-                />
-                Projects
-              </ListItem>
-              <ListItem href="#slide4">
-                <Image
-                  width={34}
-                  height={34}
-                  src={"/images/help.png"}
-                  alt="social_media"
-                />
-                Social Media
+              <ListItem>
+                <a className="flex justify-between items-center w-full text-black no-underline" href="#social">
+                  <Image
+                    width={34}
+                    height={34}
+                    src={"/images/help.png"}
+                    alt="social_media"
+                  />
+                  Social Media
+                </a>
               </ListItem>
             </List>
           )}

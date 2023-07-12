@@ -94,7 +94,7 @@ const ProjectsWindow = ({ title }) => {
   return (
     <Window className="projectswindow" shadow={false}>
       <WindowHeader className="flex items-center justify-between">
-        <span>{title}</span>
+        <span id="projects">{title}</span>
         <Button onClick={toggleFolder} size={"sm"} square>
           <span style={{ fontWeight: "bold", transform: "translateY(-1px)" }}>
             x
@@ -146,16 +146,17 @@ const ProjectsWindow = ({ title }) => {
                 alt={projects[position].title}
               />
             </Cutout>
-            <Cutout
-              className="mb-2 bg-white w-full"
-
-            >
+            <Cutout className="mb-2 bg-white w-full">
               <p className="msFont my-0">{projects[position].title}</p>
               <p className="msFont my-0">{projects[position].description}</p>
               <p className="msFont my-0">{projects[position].scope}</p>
               <p className="msFont my-0">
                 link:
-                {projects[position].link ? <a href={projects[position].link}>project link</a> : "N/A"}
+                {projects[position].link ? (
+                  <a href={projects[position].link}>project link</a>
+                ) : (
+                  "N/A"
+                )}
               </p>
             </Cutout>
             <Progress value={projects[position].percent} />

@@ -82,7 +82,7 @@ const SocialMediaWindow = ({ title }) => {
   return (
     <Window className="projectswindow" shadow={false}>
       <WindowHeader className="flex items-center justify-between">
-        <span>{title}</span>
+        <span id="social">{title}</span>
         <Button onClick={toggleFolder} size={"sm"} square>
           <span style={{ fontWeight: "bold", transform: "translateY(-1px)" }}>
             x
