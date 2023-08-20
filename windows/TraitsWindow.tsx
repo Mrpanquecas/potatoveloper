@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import {
   Window,
   WindowContent,
@@ -6,10 +6,11 @@ import {
   Button,
   Toolbar,
   Checkbox,
-  Fieldset
+  GroupBox
 } from "react95"
-import Icon from "../../../components/Icon"
-import useFunnyCases from '../../hooks/useFunnyCases'
+import Icon from "../components/Icon"
+import useFunnyCases from "../hooks/useFunnyCases"
+import { getRandomSkill } from "../utils/getRandomSkill"
 
 const fields = [
   {
@@ -29,17 +30,9 @@ const fields = [
   }
 ]
 
-const getRandomSkill = (skills, name) => {
-  let deleteRandomSkill = name
-  while (deleteRandomSkill === name) {
-    let seed = Math.floor(Math.random() * skills.length)
-    let randomName = Object.keys(skills[seed])[0]
-    if (name !== randomName) return randomName
-  }
-}
-
 const TraitsWindow = ({ title }) => {
-  const [checked2, setDeveloperSkill2] = React.useState([
+  const [open, setOpen] = useState(true)
+  const [developerSkillChecked, setDeveloperSkillChecked] = useState([
     { fast: false },
     { good: false },
     { cheap: false }
@@ -49,7 +42,7 @@ const TraitsWindow = ({ title }) => {
 
   const toggleDeveloperSkill2 = (e) => {
     // Copy of state array
-    let arraySkills = [...checked2]
+    let arraySkills = [...developerSkillChecked]
     const { checked, name } = e.target
 
     // Find skill to be edited
@@ -74,10 +67,8 @@ const TraitsWindow = ({ title }) => {
     } else {
       setImpossibleDeveloper(false)
     }
-    setDeveloperSkill2(arraySkills)
+    setDeveloperSkillChecked(arraySkills)
   }
-
-  const [open, setOpen] = React.useState(true)
 
   const toggleFolder = () => {
     setOpen(!open)
@@ -99,9 +90,7 @@ const TraitsWindow = ({ title }) => {
       <WindowHeader className="flex items-center justify-between">
         <span>{title}</span>
         <Button onClick={toggleFolder} size={"sm"} square>
-          <span style={{ fontWeight: "bold", transform: "translateY(-1px)" }}>
-            x
-          </span>
+          <span className="font-bold transform -translate-y-0.5">x</span>
         </Button>
       </WindowHeader>
       <Toolbar>
@@ -115,22 +104,15 @@ const TraitsWindow = ({ title }) => {
           Save
         </Button>
       </Toolbar>
-      <WindowContent
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          textAlign: "center",
-          justifyContent: "center"
-        }}
-      >
+      <WindowContent className="flex flex-col text-center justify-center">
         <div style={{ maxWidth: "250px" }}>
-          <Fieldset label="Choose developer traits">
+          <GroupBox label="Choose developer traits">
             {fields.map((field) => (
               <div key={field.name}>
                 <Checkbox
                   onChange={(e) => toggleDeveloperSkill2(e)}
-                  checked={!!checked2.find((el) => el[field.name])}
-                  style={{ width: "50%" }}
+                  checked={!!developerSkillChecked.find((el) => el[field.name])}
+                  className="w-1/2"
                   value={field.name}
                   label={field.label}
                   name={field.name}
@@ -138,7 +120,7 @@ const TraitsWindow = ({ title }) => {
                 <br />
               </div>
             ))}
-          </Fieldset>
+          </GroupBox>
         </div>
       </WindowContent>
     </Window>

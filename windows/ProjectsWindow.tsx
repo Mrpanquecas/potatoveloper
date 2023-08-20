@@ -1,48 +1,23 @@
 import Image from "next/image"
-import React from "react"
+import React, { useState } from "react"
 import {
   Window,
   WindowContent,
   WindowHeader,
   Button,
   Toolbar,
-  List,
-  ListItem,
-  Cutout,
-  Progress
+  Frame,
+  ProgressBar,
+  MenuList,
+  MenuListItem
 } from "react95"
-import Icon from "../../../components//Icon"
-//import ProgressBar from "../../commonComponents/ProgressBar"
+import Icon from "../components/Icon"
 
 const projects = [
   {
-    title: "title: OPSIFY (managment software)",
-    description: "description: Antd, React, PWA",
-    percent: 20,
-    scope: "custom tailored solution",
-    projectImg: "/images/logo_opsify.png",
-    link: null
-  },
-  {
-    title: "title: Crypto currency game",
-    description: "description: React Material UI",
-    percent: 40,
-    scope: "fun side project for crypto",
-    projectImg: "/images/bribescore.png",
-    link: null
-  },
-  {
-    title: "title: Retake simulator",
-    description: "description: Antd, React",
-    percent: 60,
-    scope: "custom tailored solution",
-    projectImg: "/images/altice.png",
-    link: null
-  },
-  {
     title: "title: subscription funnel",
     description: "react, nextjs, tailwindcss",
-    percent: 80,
+    percent: 0,
     scope: "Financial services",
     projectImg: "/images/scpi_funnel.png",
     link: "https://epargne.corum.fr/scpi-particuliers/intro"
@@ -50,24 +25,44 @@ const projects = [
   {
     title: "title: life insurance funnel",
     description: "react, nextjs, tailwindcss",
-    percent: 100,
+    percent: 25,
     scope: "Financial services",
     projectImg: "/images/life_funnel.png",
     link: "https://epargne.corum.fr/assurance-vie-partenaires/partenaire"
+  },
+  {
+    title: "title: OPSIFY (managment software)",
+    description: "description: Antd, React, PWA",
+    percent: 50,
+    scope: "custom tailored solution",
+    projectImg: "/images/logo_opsify.png"
+  },
+  {
+    title: "title: Crypto currency game",
+    description: "description: React Material UI",
+    percent: 75,
+    scope: "fun side project for crypto",
+    projectImg: "/images/bribescore.png"
+  },
+  {
+    title: "title: Retake simulator",
+    description: "description: Antd, React",
+    percent: 100,
+    scope: "custom tailored solution",
+    projectImg: "/images/altice.png"
   }
+  // {
+  //   title: "title: Retake simulator",
+  //   description: "description: Antd, React",
+  //   percent: 60,
+  //   projectImg: "/images/altice.png"
+  // }
 ]
 
-const listItemStyle = {
-  display: "flex",
-  flexDirection: "row",
-  alignItems: "center",
-  justifyContent: "flex-start"
-}
-
 const ProjectsWindow = ({ title }) => {
-  const [open, setOpen] = React.useState(true)
-  const [position, goNextOrPrev] = React.useState(0)
-  const [openMenu, setOpenMenu] = React.useState(false)
+  const [open, setOpen] = useState(true)
+  const [position, goNextOrPrev] = useState(0)
+  const [openMenu, setOpenMenu] = useState(false)
 
   const changeProject = (nextOrPrev) => {
     goNextOrPrev(nextOrPrev)
@@ -94,11 +89,9 @@ const ProjectsWindow = ({ title }) => {
   return (
     <Window className="projectswindow" shadow={false}>
       <WindowHeader className="flex items-center justify-between">
-        <span id="projects">{title}</span>
+        <span>{title}</span>
         <Button onClick={toggleFolder} size={"sm"} square>
-          <span style={{ fontWeight: "bold", transform: "translateY(-1px)" }}>
-            x
-          </span>
+          <span className="font-bold transform -translate-y-0.5">x</span>
         </Button>
       </WindowHeader>
       <Toolbar>
@@ -106,21 +99,21 @@ const ProjectsWindow = ({ title }) => {
           File
         </Button>
         {openMenu && (
-          <List
+          <MenuList
             className="absolute left-0 top-full z-50"
             horizontalAlign="left"
             verticalAlign="bottom"
           >
-            <ListItem
-              style={listItemStyle}
+            <MenuListItem
               as="a"
-              target="_top"
+              // TODO: contribute open source for the elegant way to allow a tag props to be passed
+              // @ts-ignore
               href="mailto:ricardo.simoescosta@hotmail.com"
             >
-              <img style={{ marginRight: 8 }} src={"/images/help.png"} />{" "}
-              Request More Info
-            </ListItem>
-          </List>
+              <Image width={34} height={34} src={"/images/help.png"} />
+              <span>Request Info</span>
+            </MenuListItem>
+          </MenuList>
         )}
         <Button variant="menu" size="sm">
           Edit
@@ -131,55 +124,43 @@ const ProjectsWindow = ({ title }) => {
       </Toolbar>
       <WindowContent className="flex flex-col text-center justify-center items-center">
         <div style={{ maxWidth: "90%" }}>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center"
-            }}
-          >
-            <Cutout className="mb-2">
+          <div className="flex flex-col items-center">
+            <Frame variant="field" className="mb-2">
               <Image
                 width={350}
-                height={200}
+                height={150}
                 src={projects[position].projectImg}
                 alt={projects[position].title}
               />
-            </Cutout>
-            <Cutout className="mb-2 bg-white w-full">
+            </Frame>
+            <Frame variant="field" className="mb-2 p-2 bg-white w-full">
               <p className="msFont my-0">{projects[position].title}</p>
               <p className="msFont my-0">{projects[position].description}</p>
               <p className="msFont my-0">{projects[position].scope}</p>
               <p className="msFont my-0">
                 link:
                 {projects[position].link ? (
-                  <a href={projects[position].link}>project link</a>
+                  <a target="_blank" href={projects[position].link}>
+                    project link
+                  </a>
                 ) : (
                   "N/A"
                 )}
               </p>
-            </Cutout>
-            <Progress value={projects[position].percent} />
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "flex-end",
-                width: "100%"
-              }}
-            >
+            </Frame>
+            <ProgressBar variant="tile" value={projects[position].percent} />
+            <div className="flex flex-row items-center justify-end w-full">
               <Button
                 disabled={position === 0}
                 onClick={() => changeProject(position - 1)}
-                style={{ marginTop: 8, marginRight: 4 }}
+                className="mt-2 mr-2"
               >
                 Previous
               </Button>
               <Button
                 disabled={position === projects.length - 1}
                 onClick={() => changeProject(position + 1)}
-                style={{ marginTop: 8, marginLeft: 4 }}
+                className="mt-2 ml-2"
               >
                 Next
               </Button>

@@ -1473,15 +1473,6 @@
     schema-utils "^3.0.0"
     source-map "^0.7.3"
 
-"@react95/clippy@^1.0.7":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@react95/clippy/-/clippy-1.0.7.tgz#4303e252f5023cb16cf677485b3aa1edbcc2dc94"
-  integrity sha512-NHcU6OTgi4AXAPjrGxdQNG0h1efHYfQIRUMOkDgNigkXatO0pS9TKUK+FafcM81VfywgYrQLAqJKia8USiRNAQ==
-  dependencies:
-    clippyjs "^0.0.3"
-    jquery "^3.6.0"
-    prop-types "^15.8.1"
-
 "@rollup/plugin-babel@^5.2.0":
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-babel/-/plugin-babel-5.3.0.tgz#9cb1c5146ddd6a4968ad96f209c50c62f92f9879"
@@ -3048,13 +3039,6 @@ clean-stack@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/clean-stack/-/clean-stack-2.2.0.tgz#ee8472dbb129e727b31e8a10a427dee9dfe4008b"
   integrity sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==
-
-clippyjs@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/clippyjs/-/clippyjs-0.0.3.tgz#34c45e3416b74d3773aeb37296c618a0b658fbbb"
-  integrity sha512-i4sPaKbCA6PfXiwxNK35E1io6AXN7VGwEGZR9sE8RqOgXPNtRWKbFubmx87JwSuwIrdClO/rkTMjhl2ZyOHjug==
-  dependencies:
-    jquery "^3.2.1"
 
 cliui@^7.0.2:
   version "7.0.4"
@@ -5697,11 +5681,6 @@ jest@^27.4.3, jest@^27.5.1:
     import-local "^3.0.2"
     jest-cli "^27.5.1"
 
-jquery@^3.2.1, jquery@^3.6.0:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.6.0.tgz#c72a09f15c1bdce142f49dbf1170bdf8adac2470"
-  integrity sha512-JVzAR/AjBvVt2BmYhxRCSYysDsPcssdmTFnzyLEts9qNwmjmu4JTAMYubEfwVOSwpQ1I1sKKFcxhZCI2buerfw==
-
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
@@ -7217,7 +7196,7 @@ prompts@^2.0.1, prompts@^2.4.2:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@^15.7.2:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -7426,10 +7405,10 @@ react-scripts@5.0.0:
   optionalDependencies:
     fsevents "^2.3.2"
 
-react95@^3.10.0:
-  version "3.11.1"
-  resolved "https://registry.yarnpkg.com/react95/-/react95-3.11.1.tgz#ed90191be5c3af7c7266706d6db68c41a623c5ce"
-  integrity sha512-h8eQhjES/TPYv9Y2ryN2Ul7XQ9SKnfRloWHT6itZP6LDWOQZNgq6pAuAGF9V36JitecMZ6Iyjd9MpZLY2k/c8A==
+react95@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/react95/-/react95-4.0.0.tgz#9e953aa379573ceb528f95139451bbf7df6fabd7"
+  integrity sha512-C/2Ecws+ShHMJa3/ki6d3ufCukEYyZ+up45NJhX+uecFh5sXNdkEX8bPZ4pKTGl0mSTMkiCJTGOJB1Gmf1W3dA==
 
 react@^17.0.2:
   version "17.0.2"
@@ -8509,6 +8488,11 @@ typedarray-to-buffer@^3.1.5:
   integrity sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==
   dependencies:
     is-typedarray "^1.0.0"
+
+typescript@^5.1.6:
+  version "5.1.6"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.1.6.tgz#02f8ac202b6dad2c0dd5e0913745b47a37998274"
+  integrity sha512-zaWCozRZ6DLEWAWFrVDz1H6FVXzUSfTy5FUMWsQlU8Ym5JP9eO4xkTIROFCQvhQf61z6O/G6ugw3SgAnvvm+HA==
 
 unbox-primitive@^1.0.1:
   version "1.0.1"
