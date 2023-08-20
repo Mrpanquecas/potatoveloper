@@ -1,6 +1,7 @@
 import Head from "next/head"
+import { GetStaticProps } from "next"
 import React from "react"
-import HomeScreen from "../src/main/HomeScreen"
+import HomeScreen from "../screens/HomeScreen"
 
 const HomeScreenPage = () => {
   return (
@@ -14,3 +15,7 @@ const HomeScreenPage = () => {
 }
 
 export default HomeScreenPage
+
+export const getStaticProps: GetStaticProps = (props) => {
+  return { props: { props } }
+}

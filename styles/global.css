@@ -9,6 +9,10 @@
   src: url("/fonts/VT323.ttf");
 }
 
+a {
+  @apply flex space-x-2 items-center w-full text-black no-underline;
+}
+
 .expertText {
   font-size: 4.75rem;
   font-family: "VT323";

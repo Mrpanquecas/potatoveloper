@@ -1,37 +1,15 @@
-import React from "react"
+import React, { useState } from "react"
 import {
   Window,
   WindowContent,
   WindowHeader,
   Button,
   Toolbar,
-  Progress,
-  Cutout,
-  Fieldset
+  Frame,
+  GroupBox
 } from "react95"
-import Icon from "../../../components/Icon"
-import SocialLink from "../../../components/SocialLinks"
-
-const projects = [
-  {
-    title: "title: OPSIFY (managment software)",
-    description: "description: Antd, React, PWA",
-    percent: 20,
-    projectImg: "/images/logo_optsify.png"
-  },
-  {
-    title: "title: Crypto currency game",
-    description: "description: React Material UI",
-    percent: 40,
-    projectImg: "/images/bribescore.png"
-  },
-  {
-    title: "title: Retake simulator",
-    description: "description: Antd, React",
-    percent: 60,
-    projectImg: "/images/altice.png"
-  }
-]
+import Icon from "../components/Icon"
+import SocialLink from "../components/SocialLinks"
 
 const socialMedia = [
   {
@@ -51,19 +29,8 @@ const socialMedia = [
   }
 ]
 
-const iconStyles = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center"
-}
-
 const SocialMediaWindow = ({ title }) => {
-  const [open, setOpen] = React.useState(true)
-  const [position, goNextOrPrev] = React.useState(0)
-
-  const changeProject = (nextOrPrev) => {
-    goNextOrPrev(nextOrPrev)
-  }
+  const [open, setOpen] = useState(true)
 
   const toggleFolder = () => {
     setOpen(!open)
@@ -75,18 +42,16 @@ const SocialMediaWindow = ({ title }) => {
         description={title}
         onClick={toggleFolder}
         icon={"/folder.png"}
-        styles={iconStyles}
+        className="flex flex-col items-center"
         alt="folder"
       />
     )
   return (
     <Window className="projectswindow" shadow={false}>
       <WindowHeader className="flex items-center justify-between">
-        <span id="social">{title}</span>
+        <span>{title}</span>
         <Button onClick={toggleFolder} size={"sm"} square>
-          <span style={{ fontWeight: "bold", transform: "translateY(-1px)" }}>
-            x
-          </span>
+          <span className="font-bold transform -translate-y-0.5">x</span>
         </Button>
       </WindowHeader>
       <Toolbar>
@@ -100,26 +65,12 @@ const SocialMediaWindow = ({ title }) => {
           Save
         </Button>
       </Toolbar>
-      <WindowContent
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          textAlign: "center",
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-      >
+      <WindowContent className="flex flex-col text-center justify-center items-center">
         <div style={{ width: "90%" }}>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center"
-            }}
-          >
-            <Cutout style={{ padding: 8, background: "white", width: "100%" }}>
+          <div className="flex flex-col items-center">
+            <Frame variant="field" className="p-2 w-full">
               <p className="msFont"></p>
-              <Fieldset variant="flat" label="Find me in my social media:">
+              <GroupBox variant="flat" label="Find me in my social media:">
                 {socialMedia.map((social) => (
                   <div key={social.name}>
                     <SocialLink
@@ -129,8 +80,8 @@ const SocialMediaWindow = ({ title }) => {
                     />
                   </div>
                 ))}
-              </Fieldset>
-            </Cutout>
+              </GroupBox>
+            </Frame>
           </div>
         </div>
       </WindowContent>
