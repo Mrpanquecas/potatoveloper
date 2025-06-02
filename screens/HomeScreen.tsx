@@ -1,18 +1,14 @@
 import React, { useEffect } from "react"
 import Menu from "../components/Menu"
-import {
-  TraitsWindow,
-  ProjectsWindow,
-  SocialMediaWindow,
-  ErrorWindow
-} from "../windows"
-import Parallax from "../components/Parallax"
+import { useRouter } from "next/navigation"
 import { Monitor } from "react95"
 import Image from "next/image"
 import { useClippy } from "@react95/clippy"
+import { Button } from "react95"
 
 const HomeScreen = () => {
   const { clippy } = useClippy()
+  const navigate = useRouter()
 
   useEffect(() => {
     console.log(clippy)
@@ -28,12 +24,12 @@ const HomeScreen = () => {
 
   return (
     <>
-      <div className="backgroundVintage relative bg-cyan-700">
-        <div className="section h-screen pt-20" data-testid="slide1">
-          <div className="HomeScreen">
+      <div className="backgroundVintage h-full relative bg-cyan-700">
+        <div className="section h-full">
+          <div className="flex flex-col items-center justify-center">
             <div
               data-testid="ceo"
-              className="newCEO"
+              className="newCEO mt-20"
               onClick={() => {
                 console.log("clicked")
                 clippy?.stop()
@@ -51,38 +47,16 @@ const HomeScreen = () => {
             <span className="shakeText expertText">CUTTING&nbsp;EDGE</span>
             <span className="expertText">TECHNOLOGIES</span>
             <span className="expertText">↓</span>
-          </div>
-        </div>
-        <div className="section h-screen" data-testid="slide2">
-          <div className="HomeScreen">
-            <TraitsWindow title="developer.exe" />
-            <Parallax
-              className="flex justify-center z-0"
-              spring={{ stiffness: 350, damping: 50 }}
-              offset={-100}
+            <Button
+              className="mt-5"
+              size="lg"
+              onClick={() => {
+                navigate.push("/projects")
+              }}
             >
-              <ErrorWindow
-                title="error.exe"
-                error="Be careful, what you are looking for might not exist"
-              />
-            </Parallax>
+              Checkout my projects
+            </Button>
           </div>
-        </div>
-        <div className="section h-screen" data-testid="slide3">
-          <span id="projects" className="pt-40 -mt-40" />
-          <Parallax>
-            <div className="HomeScreen">
-              <ProjectsWindow title="projects.exe" />
-            </div>
-          </Parallax>
-        </div>
-        <div className="section h-screen" data-testid="slide4">
-          <span id="social" className="pt-40 -mt-40" />
-          <Parallax>
-            <div className="HomeScreen">
-              <SocialMediaWindow title="social_media.exe" />
-            </div>
-          </Parallax>
         </div>
         <div>
           <Menu />
