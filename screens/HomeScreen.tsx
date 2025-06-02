@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Menu from "../components/Menu"
 import {
   TraitsWindow,
@@ -9,14 +9,40 @@ import {
 import Parallax from "../components/Parallax"
 import { Monitor } from "react95"
 import Image from "next/image"
+import { useClippy } from "@react95/clippy"
 
 const HomeScreen = () => {
+  const { clippy } = useClippy()
+
+  useEffect(() => {
+    console.log(clippy)
+    if (!clippy) return
+
+    clippy.animate()
+    clippy.speak(
+      "Hey! Remember me? I'm here to increase this website's bundle size!",
+      false
+    )
+    console.log(clippy.animations())
+  }, [clippy])
+
   return (
     <>
       <div className="backgroundVintage relative bg-cyan-700">
         <div className="section h-screen pt-20" data-testid="slide1">
           <div className="HomeScreen">
-            <div data-testid="ceo" className="newCEO">
+            <div
+              data-testid="ceo"
+              className="newCEO"
+              onClick={() => {
+                console.log("clicked")
+                clippy?.stop()
+                clippy?.speak(
+                  "Hey! Remember me? I'm here to increase this website's bundle size!",
+                  false
+                )
+              }}
+            >
               <Monitor backgroundStyles={{ background: "blue" }}>
                 <Image layout="fill" src={"/images/newCEO.jpg"} alt="CEO" />
               </Monitor>
