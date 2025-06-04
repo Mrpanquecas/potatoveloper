@@ -3,7 +3,8 @@ const nextConfig = {
   reactStrictMode: true,
   compiler: {
     removeConsole: process.env.NODE_ENV === "production"
-  }
+  },
+  transpilePackages: ["react95"]
 }
 
 module.exports = nextConfig
