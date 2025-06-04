@@ -1,4 +1,3 @@
-import Image from "next/image"
 import React, { useState } from "react"
 import {
   Window,
@@ -8,147 +7,79 @@ import {
   Toolbar,
   Frame,
   ProgressBar,
-  MenuList,
-  MenuListItem
+  Anchor
 } from "react95"
-import Icon from "../components/Icon"
+import { useClippy } from "@react95/clippy"
+import { projects } from "../utils/contants"
 
-const projects = [
-  {
-    title: "title: subscription funnel",
-    description: "react, nextjs, tailwindcss",
-    percent: 0,
-    scope: "Financial services",
-    projectImg: "/images/scpi_funnel.png",
-    link: "https://epargne.corum.fr/scpi-particuliers/intro"
-  },
-  {
-    title: "title: life insurance funnel",
-    description: "react, nextjs, tailwindcss",
-    percent: 25,
-    scope: "Financial services",
-    projectImg: "/images/life_funnel.png",
-    link: "https://epargne.corum.fr/assurance-vie-partenaires/partenaire"
-  },
-  {
-    title: "title: OPSIFY (managment software)",
-    description: "description: Antd, React, PWA",
-    percent: 50,
-    scope: "custom tailored solution",
-    projectImg: "/images/logo_opsify.png"
-  },
-  {
-    title: "title: Crypto currency game",
-    description: "description: React Material UI",
-    percent: 75,
-    scope: "fun side project for crypto",
-    projectImg: "/images/bribescore.png"
-  },
-  {
-    title: "title: Retake simulator",
-    description: "description: Antd, React",
-    percent: 100,
-    scope: "custom tailored solution",
-    projectImg: "/images/altice.png"
-  }
-  // {
-  //   title: "title: Retake simulator",
-  //   description: "description: Antd, React",
-  //   percent: 60,
-  //   projectImg: "/images/altice.png"
-  // }
-]
+type ProjectsWindowProps = {
+  onClose: () => void
+}
 
-const ProjectsWindow = ({ title }) => {
-  const [open, setOpen] = useState(true)
-  const [position, goNextOrPrev] = useState(0)
-  const [openMenu, setOpenMenu] = useState(false)
+const ProjectsWindow = ({ onClose }: ProjectsWindowProps) => {
+  const { clippy } = useClippy()
+  const [position, goNextOrPrev] = useState<number>(0)
 
-  const changeProject = (nextOrPrev) => {
+  const changeProject = (nextOrPrev: number) => {
     goNextOrPrev(nextOrPrev)
-  }
-
-  const toggleFolder = () => {
-    setOpen(!open)
-  }
-
-  const toggleMenu = () => {
-    setOpenMenu(!openMenu)
-  }
-
-  if (!open)
-    return (
-      <Icon
-        description={title}
-        onClick={toggleFolder}
-        icon={"/images/folder.png"}
-        className="flex flex-col items-center"
-        alt="folder"
-      />
+    clippy?.stop()
+    clippy?.stopCurrent()
+    clippy?.speak(
+      `You are now looking at ${projects[nextOrPrev].title}, ${projects[nextOrPrev].reaction}`,
+      true
     )
+  }
+
+  const closeProjectsWindow = () => {
+    clippy?.stop()
+    clippy?.stopCurrent()
+    clippy?.speak("Done checking my projects already?", true)
+    onClose()
+  }
+
   return (
-    <Window className="projectswindow" shadow={false}>
+    <Window
+      className="w-full mx-2 sm:w-96 sm:mx-0 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50"
+      shadow={true}
+    >
       <WindowHeader className="flex items-center justify-between">
-        <span>{title}</span>
-        <Button onClick={toggleFolder} size={"sm"} square>
+        <span>projects.exe</span>
+        <Button onClick={closeProjectsWindow} size={"sm"} square>
           <span className="font-bold transform -translate-y-0.5">x</span>
         </Button>
       </WindowHeader>
       <Toolbar>
-        <Button variant="menu" size="sm" onClick={toggleMenu}>
+        <Button disabled variant="menu" size="sm">
           File
         </Button>
-        {openMenu && (
-          <MenuList
-            className="absolute left-0 top-full z-50"
-            horizontalAlign="left"
-            verticalAlign="bottom"
-          >
-            <MenuListItem
-              as="a"
-              // TODO: contribute open source for the elegant way to allow a tag props to be passed
-              // @ts-ignore
-              href="mailto:ricardo.simoescosta@hotmail.com"
-            >
-              <Image width={34} height={34} src={"/images/help.png"} />
-              <span>Request Info</span>
-            </MenuListItem>
-          </MenuList>
-        )}
-        <Button variant="menu" size="sm">
+        <Button disabled variant="menu" size="sm">
           Edit
         </Button>
-        <Button variant="menu" size="sm" disabled>
+        <Button disabled variant="menu" size="sm">
           Save
         </Button>
       </Toolbar>
       <WindowContent className="flex flex-col text-center justify-center items-center">
-        <div style={{ maxWidth: "90%" }}>
+        <div className="w-full">
           <div className="flex flex-col items-center">
-            <Frame variant="field" className="mb-2">
-              <Image
-                width={350}
-                height={150}
-                src={projects[position].projectImg}
-                alt={projects[position].title}
-              />
-            </Frame>
             <Frame variant="field" className="mb-2 p-2 bg-white w-full">
-              <p className="msFont my-0">{projects[position].title}</p>
-              <p className="msFont my-0">{projects[position].description}</p>
-              <p className="msFont my-0">{projects[position].scope}</p>
-              <p className="msFont my-0">
-                link:
-                {projects[position].link ? (
-                  <a target="_blank" href={projects[position].link}>
-                    project link
-                  </a>
-                ) : (
-                  "N/A"
+              <p className="text-left my-1">
+                Project: {projects[position].title}
+              </p>
+              <p className="text-left my-1">{projects[position].description}</p>
+              <p className="text-left my-1 flex gap-1">
+                Link:
+                {projects[position].link && (
+                  <Anchor href={projects[position].link} target="_blank">
+                    {projects[position].link}
+                  </Anchor>
                 )}
               </p>
             </Frame>
-            <ProgressBar variant="tile" value={projects[position].percent} />
+            <ProgressBar
+              variant="tile"
+              value={(position / projects.length) * 100}
+            />
             <div className="flex flex-row items-center justify-end w-full">
               <Button
                 disabled={position === 0}

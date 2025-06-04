@@ -3,10 +3,34 @@
 @tailwind utilities;
 
 @font-face {
+  font-family: "MS Sans Serif";
+  src: url("https://unpkg.com/react95/dist/fonts/ms_sans_serif.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MS Sans Serif";
+  src: url("https://unpkg.com/react95/dist/fonts/ms_sans_serif_bold.woff2")
+    format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "VT323";
   font-style: normal;
   font-weight: 100 900;
   src: url("/fonts/VT323.ttf");
+}
+
+@layer base {
+  html {
+    font-family: "MS Sans Serif", sans-serif;
+  }
 }
 
 a {
@@ -22,13 +46,11 @@ a {
   font-family: "VT323";
 }
 
-body {
+body,
+html,
+#__next {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
 code {
@@ -55,14 +77,6 @@ code {
   background-size: 100% 2px, 3px 100%;
   opacity: 0.5;
   pointer-events: none;
-}
-
-.HomeScreen {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 .gridFlexCol {
@@ -103,7 +117,7 @@ code {
 }
 
 .msFont {
-  font-family: "VT323";
+  font-family: "MS Sans Serif", sans-serif;
   text-align: left;
 }
 
@@ -120,11 +134,6 @@ code {
   max-width: 350px;
 }
 
-.projectswindow {
-  width: 50vw;
-  z-index: 0;
-}
-
 @media only screen and (max-width: 600px) {
   .expertText {
     font-size: 3.75rem;
@@ -137,32 +146,10 @@ code {
     width: "100%";
     max-width: 250px;
   }
-
-  .projectswindow {
-    width: 80vw;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .projectswindow {
-    width: 90vw;
-  }
 }
 
 .project {
   width: 100%;
   max-width: 350px;
   height: 15vh;
-}
-
-@media only screen and (max-width: 600px) {
-  .projectswindow {
-    width: 90vw;
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  .projectswindow {
-    width: 40vh;
-  }
 }

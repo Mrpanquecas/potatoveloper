@@ -1,17 +1,23 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   important: true,
   corePlugins: {
     preflight: false
   },
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-    "./windows/**/*.{js,ts,jsx,tsx}",
-    "./screens/**/*.{js,ts,jsx,tsx}"
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./windows/**/*.{js,ts,jsx,tsx,mdx}",
+    "./screens/**/*.{js,ts,jsx,tsx,mdx}"
   ],
   theme: {
-    fontFamily: {},
-    extend: {}
+    extend: {
+      fontFamily: {
+        sans: ["Inter", "sans-serif"],
+        mono: ["VT323", "monospace"]
+      }
+    }
   },
   plugins: []
 }

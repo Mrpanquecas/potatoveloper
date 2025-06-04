@@ -15,7 +15,3 @@ const HomeScreenPage = () => {
 }
 
 export default HomeScreenPage
-
-export const getStaticProps: GetStaticProps = (props) => {
-  return { props: { props } }
-}
