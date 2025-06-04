@@ -22,18 +22,8 @@ export const showConsoleArt = (): void => {
 ░░░╚═╝░░░╚═╝░░╚══════╝╚═════╝░╚═════╝░╚═╝░░░╚═╝░░░╚══════╝`)
 
   console.log(
-    "Are you hiring? Wanna talk? You can find me on LinkedIn!",
+    "%c Are you hiring? Wanna talk? You can find me on LinkedIn!",
     "color: #00ff88; font-size: 16px; font-weight: bold;"
-  )
-
-  console.log(
-    "%cLooking for something? Check out my projects!",
-    "color: #888; font-size: 12px;"
-  )
-
-  console.log(
-    "%c",
-    "background: linear-gradient(90deg, #00f, #0ff); color: white; padding: 4px 8px; border-radius: 4px;"
   )
 }
 
