@@ -1,4 +1,3 @@
-import Image from "next/image"
 import React, { useState } from "react"
 import {
   Window,
@@ -8,84 +7,33 @@ import {
   Toolbar,
   Frame,
   ProgressBar,
-  MenuList,
-  MenuListItem
+  Anchor
 } from "react95"
-import Icon from "../components/Icon"
 import { useClippy } from "@react95/clippy"
+import { projects } from "../utils/contants"
 
-type Projects = {
-  title: string
-  description: string
-  scope: string
-  link?: string
-  reaction: string
-}
-
-const projects: Projects[] = [
-  {
-    title: "Tometrics",
-    description:
-      "Tometrics is a garden planner with a focus on data collection and analysis",
-    scope: "Garden planning",
-    link: "https://tometrics.com",
-    reaction:
-      "I love working on projects with direct impact on my life (Tometrics, get it? because tomato + metrics...."
-  },
-  {
-    title: "AUTODOC",
-    description:
-      "AUTODOC is a french company that provides a platform to manage their fleet of vehicles, for them I worked on different subscription funnels ",
-    scope: "Financial services",
-    link: "https://autodoc.de",
-    reaction: "one of my biggest projects to date"
-  },
-  {
-    title: "CORUM L'Epargne subscription funnels",
-    description:
-      "CORUM is a french company that provides financial services, for them I worked on different subscription funnels ",
-    scope: "Financial services",
-    link: "https://corumlepargne.fr",
-    reaction: "proud to work on this, a lot of money raised from investors"
-  },
-  {
-    title: "OPSIFY (managment software)",
-    description: "description: Antd, React, PWA",
-    scope: "custom tailored solution",
-    reaction: "it was a blast working on this one"
-  },
-  {
-    title: "Retake simulator",
-    description: "description: Antd, React",
-    scope: "custom tailored solution",
-    reaction:
-      "always good to help people get the best value for their used phones"
-  },
-  {
-    title: "Crypto currency game",
-    description: "description: React Material UI",
-    scope: "fun side project for crypto",
-    reaction: "just a fun little side project"
-  }
-]
-
-const ProjectsWindow = ({ title }) => {
+const ProjectsWindow = ({ title }: { title: string }) => {
   const { clippy } = useClippy()
-  const [open, setOpen] = useState(true)
-  const [position, goNextOrPrev] = useState(0)
-  const [openMenu, setOpenMenu] = useState(false)
+  const [position, goNextOrPrev] = useState<number>(0)
+  const [openMenu, setOpenMenu] = useState<boolean>(false)
 
   const changeProject = (nextOrPrev: number) => {
     goNextOrPrev(nextOrPrev)
+    clippy?.stop()
     clippy?.stopCurrent()
     clippy?.speak(
       `You are now looking at ${projects[nextOrPrev].title}, ${projects[nextOrPrev].reaction}`,
-      false
+      true
     )
   }
 
-  const toggleFolder = () => {
-    setOpen(!open)
+  const closeProjectsWindow = () => {
+    clippy?.stop()
+    clippy?.stopCurrent()
+    clippy?.speak(
+      "Why would you try to close my projects window? That's rude!",
+      true
+    )
   }
 
   const toggleMenu = () => {
@@ -93,10 +41,13 @@ const ProjectsWindow = ({ title }) => {
   }
 
   return (
-    <Window className="projectswindow" shadow={false}>
+    <Window
+      className="w-full mx-2 sm:w-96 sm:mx-0 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50"
+      shadow={true}
+    >
       <WindowHeader className="flex items-center justify-between">
         <span>{title}</span>
-        <Button disabled onClick={toggleFolder} size={"sm"} square>
+        <Button onClick={closeProjectsWindow} size={"sm"} square>
           <span className="font-bold transform -translate-y-0.5">x</span>
         </Button>
       </WindowHeader>
@@ -114,14 +65,18 @@ const ProjectsWindow = ({ title }) => {
       <WindowContent className="flex flex-col text-center justify-center items-center">
         <div className="w-full">
           <div className="flex flex-col items-center">
-            <Frame variant="field" className="mb-2"></Frame>
             <Frame variant="field" className="mb-2 p-2 bg-white w-full">
-              <p className="msFont my-0">{projects[position].title}</p>
-              <p className="msFont my-0">{projects[position].description}</p>
-              <p className="msFont my-0 underline link">
-                <a href={projects[position].link}>
-                  Link: {projects[position].link}
-                </a>
+              <p className="text-left my-1">
+                Project: {projects[position].title}
+              </p>
+              <p className="text-left my-1">{projects[position].description}</p>
+              <p className="text-left my-1 flex gap-1">
+                Link:
+                {projects[position].link && (
+                  <Anchor href={projects[position].link} target="_blank">
+                    {projects[position].link}
+                  </Anchor>
+                )}
               </p>
             </Frame>
             <ProgressBar

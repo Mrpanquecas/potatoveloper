@@ -4,7 +4,8 @@
 
 @font-face {
   font-family: "MS Sans Serif";
-  src: url('https://unpkg.com/react95/dist/fonts/ms_sans_serif.woff2') format('woff2');
+  src: url("https://unpkg.com/react95/dist/fonts/ms_sans_serif.woff2")
+    format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -12,7 +13,8 @@
 
 @font-face {
   font-family: "MS Sans Serif";
-  src: url('https://unpkg.com/react95/dist/fonts/ms_sans_serif_bold.woff2') format('woff2');
+  src: url("https://unpkg.com/react95/dist/fonts/ms_sans_serif_bold.woff2")
+    format("woff2");
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -132,11 +134,6 @@ code {
   max-width: 350px;
 }
 
-.projectswindow {
-  width: 50vw;
-  z-index: 0;
-}
-
 @media only screen and (max-width: 600px) {
   .expertText {
     font-size: 3.75rem;
@@ -149,32 +146,10 @@ code {
     width: "100%";
     max-width: 250px;
   }
-
-  .projectswindow {
-    width: 80vw;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .projectswindow {
-    width: 90vw;
-  }
 }
 
 .project {
   width: 100%;
   max-width: 350px;
   height: 15vh;
-}
-
-@media only screen and (max-width: 600px) {
-  .projectswindow {
-    width: 90vw;
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  .projectswindow {
-    width: 40vh;
-  }
 }

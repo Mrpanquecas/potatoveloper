@@ -1,14 +1,14 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import Menu from "../components/Menu"
-import { useRouter } from "next/navigation"
 import { Monitor } from "react95"
 import Image from "next/image"
 import { useClippy } from "@react95/clippy"
 import { Button } from "react95"
+import { ProjectsWindow } from "../windows"
 
 const HomeScreen = () => {
   const { clippy } = useClippy()
-  const navigate = useRouter()
+  const [openProjectsWindow, setOpenProjectsWindow] = useState<boolean>(false)
 
   useEffect(() => {
     console.log(clippy)
@@ -51,13 +51,19 @@ const HomeScreen = () => {
               className="mt-5"
               size="lg"
               onClick={() => {
-                navigate.push("/projects")
+                setOpenProjectsWindow(true)
+                clippy?.stop()
+                clippy?.speak(
+                  "I'm glad you want to know more about me! Please feel free to check my projects",
+                  false
+                )
               }}
             >
-              Checkout my projects
+              Learn more about me
             </Button>
           </div>
         </div>
+        {openProjectsWindow && <ProjectsWindow title="projects.exe" />}
         <div>
           <Menu />
         </div>
