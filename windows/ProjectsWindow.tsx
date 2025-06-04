@@ -12,10 +12,13 @@ import {
 import { useClippy } from "@react95/clippy"
 import { projects } from "../utils/contants"
 
-const ProjectsWindow = ({ title }: { title: string }) => {
+type ProjectsWindowProps = {
+  onClose: () => void
+}
+
+const ProjectsWindow = ({ onClose }: ProjectsWindowProps) => {
   const { clippy } = useClippy()
   const [position, goNextOrPrev] = useState<number>(0)
-  const [openMenu, setOpenMenu] = useState<boolean>(false)
 
   const changeProject = (nextOrPrev: number) => {
     goNextOrPrev(nextOrPrev)
@@ -30,14 +33,8 @@ const ProjectsWindow = ({ title }: { title: string }) => {
   const closeProjectsWindow = () => {
     clippy?.stop()
     clippy?.stopCurrent()
-    clippy?.speak(
-      "Why would you try to close my projects window? That's rude!",
-      true
-    )
-  }
-
-  const toggleMenu = () => {
-    setOpenMenu(!openMenu)
+    clippy?.speak("Done checking my projects already?", true)
+    onClose()
   }
 
   return (
@@ -46,13 +43,13 @@ const ProjectsWindow = ({ title }: { title: string }) => {
       shadow={true}
     >
       <WindowHeader className="flex items-center justify-between">
-        <span>{title}</span>
+        <span>projects.exe</span>
         <Button onClick={closeProjectsWindow} size={"sm"} square>
           <span className="font-bold transform -translate-y-0.5">x</span>
         </Button>
       </WindowHeader>
       <Toolbar>
-        <Button disabled variant="menu" size="sm" onClick={toggleMenu}>
+        <Button disabled variant="menu" size="sm">
           File
         </Button>
         <Button disabled variant="menu" size="sm">

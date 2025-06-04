@@ -4,14 +4,39 @@ import { Monitor } from "react95"
 import Image from "next/image"
 import { useClippy } from "@react95/clippy"
 import { Button } from "react95"
-import { ProjectsWindow } from "../windows"
+import { ProjectsWindow, SocialMediaWindow } from "../windows"
+import MainWindow from "../components/MainWindow"
+import { detectConsoleOpen, showConsoleArt } from "../utils/consoleArt"
 
 const HomeScreen = () => {
   const { clippy } = useClippy()
   const [openProjectsWindow, setOpenProjectsWindow] = useState<boolean>(false)
+  const [openSocialMediaWindow, setOpenSocialMediaWindow] =
+    useState<boolean>(false)
+  const [openMainWindow, setOpenMainWindow] = useState<boolean>(false)
+
+  const closeProjectsWindow = () => {
+    setOpenProjectsWindow(false)
+  }
+
+  const closeSocialMediaWindow = () => {
+    setOpenSocialMediaWindow(false)
+  }
+
+  const handleOpenWindow = (windowName: string) => {
+    switch (windowName) {
+      case "projects":
+        setOpenProjectsWindow(true)
+        break
+      case "social":
+        setOpenSocialMediaWindow(true)
+        break
+      default:
+        break
+    }
+  }
 
   useEffect(() => {
-    console.log(clippy)
     if (!clippy) return
 
     clippy.animate()
@@ -19,7 +44,9 @@ const HomeScreen = () => {
       "Hey! Remember me? I'm here to increase this website's bundle size!",
       false
     )
-    console.log(clippy.animations())
+    detectConsoleOpen(() => {
+      showConsoleArt()
+    })
   }, [clippy])
 
   return (
@@ -31,7 +58,6 @@ const HomeScreen = () => {
               data-testid="ceo"
               className="newCEO mt-20"
               onClick={() => {
-                console.log("clicked")
                 clippy?.stop()
                 clippy?.speak(
                   "Hey! Remember me? I'm here to increase this website's bundle size!",
@@ -51,19 +77,29 @@ const HomeScreen = () => {
               className="mt-5"
               size="lg"
               onClick={() => {
-                setOpenProjectsWindow(true)
+                setOpenMainWindow(true)
                 clippy?.stop()
                 clippy?.speak(
-                  "I'm glad you want to know more about me! Please feel free to check my projects",
+                  "Opening my computer. Feel free to explore my projects and social media!",
                   false
                 )
               }}
             >
-              Learn more about me
+              Learn more about me!
             </Button>
           </div>
         </div>
-        {openProjectsWindow && <ProjectsWindow title="projects.exe" />}
+
+        {openMainWindow && (
+          <MainWindow
+            onOpenWindow={handleOpenWindow}
+            onClose={() => setOpenMainWindow(false)}
+          />
+        )}
+        {openProjectsWindow && <ProjectsWindow onClose={closeProjectsWindow} />}
+        {openSocialMediaWindow && (
+          <SocialMediaWindow onClose={closeSocialMediaWindow} />
+        )}
         <div>
           <Menu />
         </div>

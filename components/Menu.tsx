@@ -1,58 +1,38 @@
-import Image from "next/image"
 import React, { useState } from "react"
-import { MenuList, MenuListItem, Button, Toolbar, AppBar } from "react95"
+import { Button, Toolbar, AppBar, TextInput } from "react95"
 import Clock from "./Clock"
+import { useClippy } from "@react95/clippy"
 
 const Menu = () => {
-  const [open, setOpen] = useState(false)
+  const { clippy } = useClippy()
+  const [search, setSearch] = useState("")
 
-  const toggleMenu = () => {
-    setOpen(!open)
+  const handleSearch = () => {
+    window.open(`https://letmegooglethat.com/?q=${search}`, "_blank")
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value)
   }
 
   return (
     <AppBar className="z-10">
       <Toolbar className="w-full">
         <div className="relative flex items-center w-full justify-between pr-2">
-          <Button onClick={toggleMenu} active={open}>
-            Start
-          </Button>
-          {open && (
-            <MenuList
-              className="absolute left-0 top-full"
-              horizontalAlign="left"
-              verticalAlign="top"
-            >
-              <MenuListItem
-                as="a"
-                // TODO: contribute open source for the elegant way to allow a tag props to be passed
-                // @ts-ignore
-                href="#projects"
-              >
-                <Image
-                  width={34}
-                  height={34}
-                  src={"/images/help.png"}
-                  alt="projects"
-                />
-                <span>Projects</span>
-              </MenuListItem>
-              <MenuListItem
-                as="a"
-                // TODO: contribute open source for the elegant way to allow a tag props to be passed
-                // @ts-ignore
-                href="#social"
-              >
-                <Image
-                  width={34}
-                  height={34}
-                  src={"/images/help.png"}
-                  alt="social_media"
-                />
-                <span>Social Media</span>
-              </MenuListItem>
-            </MenuList>
-          )}
+          <div className="flex gap-2">
+            <TextInput
+              onChange={handleChange}
+              onFocus={() => {
+                clippy?.speak(
+                  "Type something, I gonna help you figure it out with my top-notch-AI-powered search engine",
+                  true
+                )
+              }}
+              placeholder="Type something..."
+              width={150}
+            />
+            <Button onClick={handleSearch}>Search</Button>
+          </div>
           <Clock />
         </div>
       </Toolbar>
